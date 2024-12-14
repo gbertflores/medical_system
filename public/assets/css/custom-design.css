@@ -1,0 +1,64 @@
+.progress-tracker .step {
+  text-align: center;
+  width: 32%;
+  position: relative;
+  padding: 10px 0;
+  /* border-bottom: 3px solid #00000059; */
+}
+
+/* .progress-tracker .step.active {
+  border-bottom: 3px solid #5E0B0B;
+} */
+
+.progress-tracker .step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -100px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 200px;
+  height: 2px;
+  background-color: #000;
+}
+
+@media (max-width: 768px) {
+  .progress-tracker .step:not(:last-child)::after {
+      right: -30px;
+      width: 60px;
+  }
+}
+
+.progress-tracker .step .step-number {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  background-color: #00000059;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.progress-tracker .step.active .step-number {
+  background-color: #5E0B0B;
+}
+
+#navbar {
+  transition: top 0.1s ease, margin-top 0.3s ease;
+}
+
+.col-3-5 {
+  flex: 0 0 auto;
+  width: 28.33%; }
+
+.col-5-equal {
+  flex: 0 0 auto;
+  width: 20%; }
+
+.col-2-5 {
+  flex: 0 0 auto;
+  width: 15%; }
+
+.w-33 {
+  width: 33% !important; }
