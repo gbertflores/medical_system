@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->index();
+            $table->string('appointment_number');
             $table->date('appointment_date');
             $table->string('appointment_schedule');
             $table->string('school_year');

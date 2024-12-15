@@ -38,6 +38,9 @@ class Login extends Component
         }
 
         session()->regenerate();
+        
+        if (is_null(auth()->user()->username))
+            return redirect('/setup-account');
 
         return redirect('/dashboard');
 

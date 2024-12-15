@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('student_information', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->index();
-            $table->foreignId('course_id')->index();
-            $table->foreignId('college_id')->index();
             $table->foreignId('campus_id')->index();
+            $table->string('college');
+            $table->string('course');
+            $table->string('major')->nullable();
             $table->enum('year_level',['1st year', '2nd year', '3rd year', '4th year']);
-            $table->enum('status', ['regular', 'irregular']);
+            $table->enum('status', ['Regular', 'Irregular']);
             $table->timestamps();
         });
     }
