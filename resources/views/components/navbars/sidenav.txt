@@ -28,36 +28,16 @@
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>
                     </div>
-                    <span class="nav-link-text ms-1">Users List</span>
-                </a>
-            </li>
-            @elseif(auth()->user()->hasRole('medical_staff'))
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">list</i>
-                    </div>
                     <span class="nav-link-text ms-1">Students List</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'transaction-list' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('transaction-list') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'billing' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('billing') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">list</i>
+                        <i class="material-icons opacity-10">description</i>
                     </div>
-                    <span class="nav-link-text ms-1">Transaction List</span>
-                </a>
-            </li>
-            @elseif(auth()->user()->hasRole('drrmo_staff'))
-            <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'transaction-list' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('transaction-list') }}">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">list</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Transaction List</span>
+                    <span class="nav-link-text ms-1">Medical Certificates</span>
                 </a>
             </li>
             @elseif(auth()->user()->hasRole('student'))
@@ -71,8 +51,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'appointment-history' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('appointment-history') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('user-management') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>
                     </div>

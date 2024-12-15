@@ -38,17 +38,16 @@ Route::group(['middleware' => 'auth'], function () {
 
         return $next($request);
     }], function () {
-        Route::get('user-profile', UserProfile::class)->middleware('auth')->name('user-profile');
-        Route::get('user-management', UserManagement::class)->middleware('auth')->name('user-management');
+        Route::get('user-profile', UserProfile::class)->name('user-profile');
+        Route::get('user-management', UserManagement::class)->name('user-management');
+        Route::get('appointment-history', UserManagement::class)->name('appointment-history');
+        Route::get('transaction-list', UserManagement::class)->name('transaction-list');
+        Route::get('medical-results', UserManagement::class)->name('medical-results');
         Route::get('book-appointment', BookAppointment::class)->name('book-appointment');
         Route::get('dashboard', Dashboard::class)->name('dashboard');
-        Route::get('billing', Billing::class)->name('billing');
         Route::get('profile', Profile::class)->name('profile');
-        Route::get('tables', Tables::class)->name('tables');
         Route::get('notifications', Notifications::class)->name("notifications");
-        Route::get('virtual-reality', VirtualReality::class)->name('virtual-reality');
         Route::get('static-sign-in', StaticSignIn::class)->name('static-sign-in');
         Route::get('static-sign-up', StaticSignUp::class)->name('static-sign-up');
-        Route::get('rtl', RTL::class)->name('rtl');
     });
 });
