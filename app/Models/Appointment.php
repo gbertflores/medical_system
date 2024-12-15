@@ -17,4 +17,14 @@ class Appointment extends Model
         'remarks',
         'purpose'
     ];
+
+    public function studentInformation()
+    {
+        return $this->hasOneThrough(StudentInformation::class, User::class, 'id', 'user_id', 'user_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

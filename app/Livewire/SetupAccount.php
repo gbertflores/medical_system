@@ -71,7 +71,7 @@ class SetupAccount extends Component
         $validatedData = $this->validate();
 
         $user->update([
-            'name' => trim($this->last_name . ' ' . $this->first_name . ' ' . ($this->middle_name ? $this->middle_name . ' ' : '') . ($this->extension_name ? $this->extension_name : '')),
+            'name' => trim($this->last_name . ', ' . $this->first_name . ' ' . ($this->middle_name ? $this->middle_name . ' ' : '') . ($this->extension_name ? $this->extension_name : '')),
         ]);
 
         // Save data in the PersonalInformation table
@@ -83,6 +83,7 @@ class SetupAccount extends Component
             'extension_name' => $this->extension_name??'',
             'contact_number' => $this->contact_number,
             'address' => $this->street.', '.$this->barangay.', '.$this->city.', '.$this->province,
+            'zppsu_number' => $this->student_number,
         ]);
 
         // Save data in the StudentInformation table
@@ -94,7 +95,6 @@ class SetupAccount extends Component
             'major' => $this->major,
             'year_level' => $this->year_level,
             'status' => $this->status,
-            'zppsu_number' => $this->student_number,
         ]);
 
         // Save data in the MedicalProfile table

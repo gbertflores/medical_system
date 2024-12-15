@@ -33,8 +33,8 @@
             </li>
             @elseif(auth()->user()->hasRole('medical_staff'))
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'student-list' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('student-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>
                     </div>
@@ -42,22 +42,22 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'transaction-list' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('transaction-list') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'appointment-list' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('appointment-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>
                     </div>
-                    <span class="nav-link-text ms-1">Transaction List</span>
+                    <span class="nav-link-text ms-1">Appointment List</span>
                 </a>
             </li>
             @elseif(auth()->user()->hasRole('drrmo_staff'))
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'transaction-list' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('transaction-list') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'appointment-list' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('appointment-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>
                     </div>
-                    <span class="nav-link-text ms-1">Transaction List</span>
+                    <span class="nav-link-text ms-1">Appointment List</span>
                 </a>
             </li>
             @elseif(auth()->user()->hasRole('student'))

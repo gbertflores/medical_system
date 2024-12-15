@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\AppointmentHistory;
 use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
@@ -11,13 +12,16 @@ use App\Livewire\Dashboard;
 use App\Livewire\UserManagement;
 use App\Livewire\UserProfile;
 use App\Livewire\Landing;
+use App\Livewire\MedicalResults;
 use App\Livewire\Notifications;
 use App\Livewire\Profile;
 use App\Livewire\RTL;
 use App\Livewire\SetupAccount;
 use App\Livewire\StaticSignIn;
 use App\Livewire\StaticSignUp;
+use App\Livewire\StudentList;
 use App\Livewire\Tables;
+use App\Livewire\AppointmentList;
 use App\Livewire\VirtualReality;
 
 Route::get('/', Landing::class)->middleware('guest')->name('landing');
@@ -40,9 +44,10 @@ Route::group(['middleware' => 'auth'], function () {
     }], function () {
         Route::get('user-profile', UserProfile::class)->name('user-profile');
         Route::get('user-management', UserManagement::class)->name('user-management');
-        Route::get('appointment-history', UserManagement::class)->name('appointment-history');
-        Route::get('transaction-list', UserManagement::class)->name('transaction-list');
-        Route::get('medical-results', UserManagement::class)->name('medical-results');
+        Route::get('student-list', StudentList::class)->name('student-list');
+        Route::get('appointment-history', AppointmentHistory::class)->name('appointment-history');
+        Route::get('appointment-list', AppointmentList::class)->name('appointment-list');
+        Route::get('medical-results', MedicalResults::class)->name('medical-results');
         Route::get('book-appointment', BookAppointment::class)->name('book-appointment');
         Route::get('dashboard', Dashboard::class)->name('dashboard');
         Route::get('profile', Profile::class)->name('profile');
