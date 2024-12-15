@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->index();
             $table->date('appointment_date');
-            $table->time('appointment_time');
+            $table->string('appointment_schedule');
             $table->string('school_year');
             $table->string('semester');
-            $table->string('status');
-            $table->string('remarks');
-            $table->string('purpose');
+            $table->string('status')->default('Pending');
+            $table->string('remarks')->nullable();
+            $table->string('purpose')->default('Enrollment');
             $table->timestamps();
         });
     }

@@ -280,10 +280,6 @@ a.fc-event, a.fc-event:hover {
 
 .fc-h-event {
   display: block;
-  border: 1px solid #3788d8;
-  border: 1px solid var(--fc-event-border-color,#3788d8);
-  background-color: #3788d8;
-  background-color: var(--fc-event-bg-color,#3788d8);
 }
 
 .bg-gradient-info {
@@ -330,3 +326,7 @@ a.fc-event, a.fc-event:hover {
   position: sticky;
 }
 
+
+.fc-day-today .fc-daygrid-day-number {
+  font-weight: bold;
+}
