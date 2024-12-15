@@ -8,7 +8,7 @@
                             <div class="card z-index-0 fadeIn3 fadeInBottom">
                                 <div class="card-body">
                                     <h6 class="text-black font-weight-bolder text-start mt-2 mb-0">Part 1. Personal Information</h6>                                   
-                                    <form wire:submit="save">               
+                                    <form wire:submit="store">               
                                         <div class="row mt-4">
                                             <div class="col-3-5">
                                                 <div class="input-group input-group-outline @if(strlen($last_name ?? '') > 0) is-filled @endif">
@@ -35,9 +35,9 @@
                                                 </div>
                                             </div>
                                             <div class="col-2-5">
-                                                <div class="input-group input-group-outline @if(strlen($middle_name ?? '') > 0) is-filled @endif">
+                                                <div class="input-group input-group-outline @if(strlen($extension_name ?? '') > 0) is-filled @endif">
                                                     <label class="form-label">Extension Name</label>
-                                                    <input wire:model.live="middle_name" type="text" class="form-control">
+                                                    <input wire:model.live="extension_name" type="text" class="form-control">
                                                 </div>
                                             </div>
                                         </div>
@@ -94,13 +94,17 @@
                                         <h6 class="text-black font-weight-bolder text-start my-4">Part 2. Student Information</h6> 
                                         <div class="row mt-4">
                                             <div class="col-6">
-                                                <div class="input-group input-group-outline @if(strlen($campus ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Campus</label>
-                                                    <input wire:model.live="campus" type="text" class="form-control">
+                                                <div class="relative">
+                                                    <select wire:model.blur="campus_id" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select Campus</option>
+                                                        @foreach($campuses as $campus)
+                                                            <option value="{{ $campus->id }}">{{ $campus->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('campus_id')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('campus')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
                                             </div>
                                             <div class="col-6">
                                                 <div class="input-group input-group-outline @if(strlen($college ?? '') > 0) is-filled @endif">
@@ -133,23 +137,40 @@
                                             </div>
                                         </div>
                                         <div class="row mt-4">
-                                            <div class="col-6">
-                                                <div class="input-group input-group-outline @if(strlen($year_level ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Year Level</label>
-                                                    <input wire:model.live="year_level" type="text" class="form-control">
+                                            <div class="col-4">
+                                                <div class="input-group input-group-outline @if(strlen($student_number ?? '') > 0) is-filled @endif">
+                                                    <label class="form-label">Student Number</label>
+                                                    <input wire:model.live="student_number" type="text" class="form-control">
                                                 </div>
-                                                @error('year_level')
+                                                @error('student_number')
                                                 <p class='text-danger inputerror'>{{ $message }}</p>
                                                 @enderror
                                             </div>
-                                            <div class="col-6">
-                                                <div class="input-group input-group-outline @if(strlen($status ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Status</label>
-                                                    <input wire:model.live="status" type="text" class="form-control">
+                                            <div class="col-4">
+                                                <div class="relative">
+                                                    <select wire:model.blur="year_level" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select Year Level</option>
+                                                        <option value="1st year">1st year</option>
+                                                        <option value="2nd year">2nd year</option>
+                                                        <option value="3rd year">3rd year</option>
+                                                        <option value="4th year">4th year</option>
+                                                    </select>
+                                                    @error('year_level')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('status')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="relative">
+                                                    <select wire:model.blur="status" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select Status</option>
+                                                        <option value="Regular">Regular</option>
+                                                        <option value="Irregular">Irregular</option>
+                                                    </select>
+                                                    @error('status')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
+                                                </div>
                                             </div>
                                         </div>
                                         
@@ -165,22 +186,34 @@
                                                 @enderror
                                             </div>
                                             <div class="col-3">
-                                                <div class="input-group input-group-outline @if(strlen($gender ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Gender</label>
-                                                    <input wire:model.live="gender" type="text" class="form-control">
+                                                <div class="relative">
+                                                    <select wire:model.blur="gender" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select Gender</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                    @error('gender')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('gender')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
                                             </div>
                                             <div class="col-3">
-                                                <div class="input-group input-group-outline @if(strlen($blood_type ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Blood Type</label>
-                                                    <input wire:model.live="blood_type" type="text" class="form-control">
+                                                <div class="relative">
+                                                    <select wire:model.blur="blood_type" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select Blood Type</option>
+                                                        <option value="A+">A+</option>
+                                                        <option value="A-">A-</option>
+                                                        <option value="B+">B+</option>
+                                                        <option value="B-">B-</option>
+                                                        <option value="AB+">AB+</option>
+                                                        <option value="AB-">AB-</option>
+                                                        <option value="O+">O+</option>
+                                                        <option value="O-">O-</option>
+                                                    </select>
+                                                    @error('blood_type')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('blood_type')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
                                             </div>
                                         </div>
 

@@ -330,3 +330,29 @@ a.fc-event, a.fc-event:hover {
 .fc-day-today .fc-daygrid-day-number {
   font-weight: bold;
 }
+
+.form-select {
+  transition: .2s ease;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: .5rem 1rem .5rem 0;
+  -moz-padding-start: -3px;
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.4rem;
+  color: #495057;
+  background-color: transparent;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCAxNiAxNic+PHBhdGggZmlsbD0nbm9uZScgc3Ryb2tlPScjMzQzYTQwJyBzdHJva2UtbGluZWNhcD0ncm91bmQnIHN0cm9rZS1saW5lam9pbj0ncm91bmQnIHN0cm9rZS13aWR0aD0nMicgZD0nTTIgNWw2IDYgNi02Jy8+PC9zdmc+);
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  background-size: 16px 12px;
+  border: 1px solid #495057;
+  border-radius: .375rem;
+  transition: .2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
