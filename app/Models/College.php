@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StudentInformation extends Model
+class College extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
-        'user_id', 'campus_id', 'program_id', 'major', 'year_level', 'status'
+        'name',
+        'abbreviation'
     ];
 }

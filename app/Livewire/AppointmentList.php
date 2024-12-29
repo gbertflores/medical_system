@@ -18,18 +18,14 @@ class AppointmentList extends Component
 
     public function updateStatus()
     {
-        // $this->validate();
-
-        // Find and update the appointment
         $appointment = Appointment::find($this->appointmentId);
-        $appointment->status = $this->status;
-        $appointment->save();
+        $appointment->update([
+            'status' => $this->status
+        ]);
 
-        // Emit event to close the modal
-        $this->dispatch('closeModal');
 
-        // Optionally, show a success message
-        session()->flash('message', 'Status updated successfully.');
+        $this->js("alert('Successfully updated!')");
+        return redirect('/appointment-list');
     }
 
     public function render()

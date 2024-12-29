@@ -2,6 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Profile;
+use App\Models\Student;
+use App\Models\StudentInformation;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -27,8 +30,10 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            'username' => fake()->userName(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'is_active' => 1,
         ];
     }
 
@@ -40,5 +45,27 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function configure()
+    {
+        return $this->afterCreating(function ($user) {
+            if ($user->role !== 'administrator') {
+                $profile = Profile::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+
+                $user->update([
+                    'name' => trim(
+                        "{$profile->last_name}, {$profile->first_name} {$profile->middle_name} {$profile->extension_name}"
+                    ),
+                ]);
+            }
+            if ($user->role == 'student') {
+                StudentInformation::factory()->create([
+                    'user_id' => $user->id,
+                ]);
+            }
+        });
     }
 }

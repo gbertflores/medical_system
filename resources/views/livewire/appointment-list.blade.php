@@ -36,7 +36,7 @@
                                         COURSE</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        MAJOR</th>
+                                        STATUS</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>
@@ -68,7 +68,7 @@
                                         <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->course }}</p>
                                     </td>
                                     <td class="align-middle text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->major }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $appointment->status }}</p>
                                     </td>
                                     <td class="align-middle">
                                         <!-- Update Status Button -->

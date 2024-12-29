@@ -187,12 +187,12 @@
                                             </div>
                                             <div class="col-3">
                                                 <div class="relative">
-                                                    <select wire:model.blur="gender" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
-                                                        <option value="">Select Gender</option>
+                                                    <select wire:model.blur="sex" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                        <option value="">Select sex</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
                                                     </select>
-                                                    @error('gender')
+                                                    @error('sex')
                                                     <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                                     @enderror
                                                 </div>

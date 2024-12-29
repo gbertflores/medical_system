@@ -30,7 +30,7 @@ class SetupAccount extends Component
     public $year_level;
     public $status;
     public $birthdate;
-    public $gender;
+    public $sex;
     public $blood_type;
     public $allergies;
     public $medical_history;
@@ -53,7 +53,7 @@ class SetupAccount extends Component
         'year_level' => 'required|string|max:50',
         'status' => 'required|string|max:50',
         'birthdate' => 'required|date',
-        'gender' => 'required|string|max:50',
+        'sex' => 'required|string|max:50',
         'blood_type' => 'required|string|max:10',
         'allergies' => 'required|string|max:1000',
         'medical_history' => 'required|string|max:1000',
@@ -101,7 +101,7 @@ class SetupAccount extends Component
         $medicalProfile = MedicalProfile::create([
             'profile_id' => $profile->id,
             'birthdate' => $this->birthdate,
-            'gender' => $this->gender,
+            'sex' => $this->sex,
             'blood_type' => $this->blood_type,
             'allergies' => $this->allergies,
             'medical_history' => $this->medical_history,
