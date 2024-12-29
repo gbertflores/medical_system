@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medical_profiles', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('profile_id');
-            $table->string('birthdate');
-            $table->string('sex');
-            $table->string('blood_type');
-            $table->string('allergies');
-            $table->string('medical_history');
+            $table->foreignId('college_id');
+            $table->string('name');
+            $table->string('abbreviation');
+            $table->string('description')->nullable();
+            $table->integer('duration_years')->default(4);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medical_profiles');
+        Schema::dropIfExists('programs');
     }
 };

@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('student_information', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->index();
-            $table->foreignId('campus_id')->index();
-            $table->string('college');
-            $table->string('course');
+            $table->foreignId('user_id');
+            $table->foreignId('campus_id');
+            $table->foreignId('program_id');
             $table->string('major')->nullable();
             $table->enum('year_level',['1st year', '2nd year', '3rd year', '4th year']);
             $table->enum('status', ['Regular', 'Irregular']);

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('medical_results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appointment_id')->index();
+            $table->foreignId('appointment_id');
             $table->string('file_name');
             $table->string('file_url');
             $table->string('test_type');

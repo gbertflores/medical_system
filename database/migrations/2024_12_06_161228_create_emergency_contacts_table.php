@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('emergency_contacts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('medical_profile_id')->index();
+            $table->foreignId('medical_profile_id');
             $table->string('emergency_contact_name');
             $table->string('emergency_contact_number');
             $table->string('emergency_contact_relationship');
