@@ -15,16 +15,21 @@ class UserSeeder extends Seeder
     {
         User::factory(1)->create([
             'name' => 'administrator',
+            'email' => 'administrator@medex.com',
             'role' => 'administrator',
+            'password' => 'secret',
         ]);
         User::factory(3)->create([
             'role' => 'medical staff',
+            'password' => 'secret',
         ]);
         User::factory(3)->create([
             'role' => 'drrmo staff',
+            'password' => 'secret',
         ]);
         User::factory(20)->create([
             'role' => 'student',
+            'password' => 'secret',
         ]);
     }
 }
