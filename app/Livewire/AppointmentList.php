@@ -7,6 +7,7 @@ use Livewire\Component;
 
 class AppointmentList extends Component
 {
+    public $selectedAppointment = null;
     public $appointmentId;
     public $status;
 
@@ -28,9 +29,23 @@ class AppointmentList extends Component
         return redirect('/appointment-list');
     }
 
+    public function showDetails($appointmentId)
+    {
+        // Set the selected appointment and hide the list
+        $this->selectedAppointment = Appointment::find($appointmentId);
+
+        return redirect('/appointment-list/result')->with('selectedAppointment', $this->selectedAppointment);
+    }
+
+    public function goBackToList()
+    {
+        // Reset to show the list again
+        $this->selectedAppointment = null;
+    }
+
     public function render()
     {
-        $appointments = Appointment::where('appointment_date', now()->format('Y-m-d'))->with('user.profile', 'studentInformation')->get();
+        $appointments = Appointment::with('user.profile', 'studentInformation')->get();
         foreach($appointments as $appointment){
             $appointment->student_number = $appointment->user->profile->zppsu_number;
             // $appointment->studentInformation;

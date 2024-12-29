@@ -12,4 +12,12 @@ class StudentInformation extends Model
     protected $fillable = [
         'user_id', 'campus_id', 'program_id', 'major', 'year_level', 'status'
     ];
+
+    public function program() {
+        return $this->belongsTo(Program::class);
+    }
+
+    public function campus() {
+        return $this->belongsTo(Campus::class);
+    }
 }
