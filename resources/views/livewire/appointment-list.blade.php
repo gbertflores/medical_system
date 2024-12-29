@@ -62,10 +62,10 @@
                                         <p class="text-xs text-secondary mb-0">{{ $appointment->user->profile->contact_number }}</p>
                                     </td>
                                     <td class="align-middle text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->college }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->program->college->abbreviation }}</p>
                                     </td>
                                     <td class="align-middle text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->course }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $appointment->studentInformation->program->abbreviation }}</p>
                                     </td>
                                     <td class="align-middle text-sm">
                                         <p class="text-xs text-secondary mb-0">{{ $appointment->status }}</p>
@@ -75,6 +75,10 @@
                                         <a wire:click="openStatusUpdateModal('{{ $appointment['id'] }}')" class="btn btn-warning btn-link"
                                            data-original-title="Update Status" title="Update Status">
                                             <i class="material-icons">update</i>
+                                        </a>
+                                        <a wire:click="showDetails('{{ $appointment['id'] }}')" class="btn btn-secondary btn-link"
+                                           data-original-title="Update Status" title="Update Status">
+                                            <i class="material-icons">east</i>
                                         </a>
                                     </td>
                                 </tr>

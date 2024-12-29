@@ -31,7 +31,7 @@
                     <span class="nav-link-text ms-1">Users List</span>
                 </a>
             </li>
-            @elseif(auth()->user()->hasRole('medical_staff'))
+            @elseif(auth()->user()->hasRole('medical staff'))
             <li class="nav-item">
                 <a class="nav-link text-white {{ Route::currentRouteName() == 'student-list' ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('student-list') }}">
@@ -42,17 +42,17 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'appointment-list' ? ' active bg-gradient-primary' : '' }} "
+                <a class="nav-link text-white {{ str_starts_with(Route::currentRouteName(), 'appointment-list') ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('appointment-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">list</i>
+                        <i class="material-icons opacity-10">checklist</i>
                     </div>
                     <span class="nav-link-text ms-1">Appointment List</span>
                 </a>
             </li>
-            @elseif(auth()->user()->hasRole('drrmo_staff'))
+            @elseif(auth()->user()->hasRole('drrmo staff'))
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'appointment-list' ? ' active bg-gradient-primary' : '' }} "
+                <a class="nav-link text-white {{ str_starts_with(Route::currentRouteName(), 'appointment-list') ? ' active bg-gradient-primary' : '' }} "
                     href="{{ route('appointment-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="material-icons opacity-10">list</i>

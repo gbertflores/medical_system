@@ -25,7 +25,7 @@ class ProfileFactory extends Factory
             'contact_number' => fake()->phoneNumber(),
             'address' => fake()->address(),
             'profile_photo_path' => null, // Can be a URL or file path
-            'zppsu_number' => fake()->unique()->numerify('VL-#####'),
+            'zppsu_number' => fake()->unique()->numerify('202#-#####'),
         ];
     }
 

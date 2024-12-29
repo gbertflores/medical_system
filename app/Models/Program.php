@@ -13,4 +13,8 @@ class Program extends Model
         'description',
         'duration_years'
     ];
+
+    public function college() {
+        return $this->belongsTo(College::class);
+    }
 }

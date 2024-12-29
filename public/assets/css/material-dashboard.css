@@ -13775,8 +13775,7 @@ body.dark-version {
     .input-group.input-group-outline .form-control.form-control-sm {
       padding: 0.25rem 0.75rem !important; }
     .input-group.input-group-outline .form-control[disabled] {
-      cursor: not-allowed;
-      border-style: dashed; }
+      cursor: not-allowed;}
   .input-group.input-group-outline .form-label {
     display: flex;
     line-height: 3.925 !important;
