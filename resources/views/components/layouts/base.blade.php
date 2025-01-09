@@ -7,7 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('assets') }}/img/apple-icon.png">
     <link rel="icon" type="image/png" href="{{ asset('assets') }}/img/zppsu-logo.png">
     <title>
-       ZPPSU MedEx
+       School Medical System
     </title>
 
     <!--     Fonts and icons     -->
