@@ -23,6 +23,7 @@ use App\Livewire\StudentList;
 use App\Livewire\Tables;
 use App\Livewire\AppointmentList;
 use App\Livewire\AppointmentResult;
+use App\Livewire\NewMedicalResult;
 use App\Livewire\VirtualReality;
 
 Route::get('/', Landing::class)->middleware('guest')->name('landing');
@@ -46,6 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('user-profile', UserProfile::class)->name('user-profile');
         Route::get('user-management', UserManagement::class)->name('user-management');
         Route::get('student-list', StudentList::class)->name('student-list');
+        Route::get('student-list/new-medical-result', NewMedicalResult::class)->name('student-list');
         Route::get('appointment-history', AppointmentHistory::class)->name('appointment-history');
         Route::get('appointment-list', AppointmentList::class)->name('appointment-list');
         Route::get('appointment-list/result', AppointmentResult::class)->name('appointment-list/result');
