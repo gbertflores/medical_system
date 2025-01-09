@@ -83,21 +83,130 @@
             </div>
         </div>
         <div class="row mt-4">
-        <div class="col-lg-4 col-md-6 mt-4 mb-4">
-            <div class="card z-index-2">
-                <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-                    <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
-                        <div class="chart">
-                            <canvas id="chart-bar-stacked" class="chart-canvas" height="170"></canvas>
+            <div class="col-lg-4 col-md-6 mt-4 mb-4">
+                <div class="card z-index-2">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                            <div class="chart">
+                                <canvas id="chart-bar" class="chart-canvas" height="170"></canvas>
+                            </div>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <h6 class="mb-0"> Healthy Students </h6>
+                        <hr class="dark horizontal">
+                    </div>
                 </div>
-                <div class="card-body">
-                    <h6 class="mb-0"> Healthy Students </h6>
-                    <hr class="dark horizontal">
+            </div>
+            <div class="col-lg-4 col-md-6 mt-4 mb-4">
+                <div class="card z-index-2">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                            <div class="chart">
+                                <canvas id="chart-bar2" class="chart-canvas" height="170"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-0"> UTI Cases </h6>
+                        <hr class="dark horizontal">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mt-4 mb-4">
+                <div class="card z-index-2">
+                    <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
+                        <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
+                            <div class="chart">
+                                <canvas id="chart-bar3" class="chart-canvas" height="170"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="mb-0"> Drug Test </h6>
+                        <hr class="dark horizontal">
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="card z-index-2 mt-4">
+            <div class="card-header p-0">
+                <div class="icon icon-lg icon-shape bg-gradient-warning shadow-warning text-center border-radius-xl mt-n4 me-3 float-start">
+                    <i class="material-icons opacity-10">donut_small</i>
+                </div>
+                <h6 class="mb-0">Complications</h6>
+            </div>
+            <div class="card-body d-flex p-3 pt-0">
+                <div class="chart w-50">
+                    <canvas id="doughnut-chart1" class="chart-canvas" height="608" style="display: block; box-sizing: border-box; height: 304px; width: 257.5px;" width="515"></canvas>
+                </div>
+                <div class="table-responsive w-50">
+                    <table class="table align-items-center mb-0">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Leukemia</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> 25% </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Kidney Disease</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> 13% </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Diabetes</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> 12% </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Tuberculosis</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> 37% </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Pneumonia</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> 13% </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
     @if($first_access)
@@ -131,32 +240,32 @@
         var myModal = new bootstrap.Modal(document.getElementById('autoOpenModal'));
         myModal.show();
     });
-    var ctx = document.getElementById("chart-bar-stacked").getContext("2d");
+    var bar = document.getElementById("chart-bar").getContext("2d");
 
-    new Chart(ctx, {
+    new Chart(bar, {
         type: "bar",
         data: {
-            labels: ["M", "T", "W", "T", "F", "S", "S"],
+            labels: ["Health Status"], // Single label for the category
             datasets: [
-            {
-                label: 'Male',
-                tension: 0.4,
-                borderWidth: 0,
-                borderSkipped: false,
-                data: [12, 19, 3, 5, 2, 3, 7],
-                backgroundColor: 'rgba(75, 192, 192, 0.6)',
-                maxBarThickness: 12
-            },
-            {
-                label: 'Female',
-                tension: 0.4,
-                borderWidth: 0,
-                borderSkipped: false,
-                data: [8, 11, 7, 6, 4, 5, 8],
-                backgroundColor: 'rgba(153, 102, 255, 0.6)',
-                maxBarThickness: 12
-            },
-        ],
+                {
+                    label: 'Healthy',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [80], // Data for Healthy
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Unhealthy',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [20], // Data for Unhealthy
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+            ],
         },
         options: {
             plugins: {
@@ -167,56 +276,332 @@
                 },
             },
             responsive: true,
-                scales: {
-                    y: {
-                    stacked: true,
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
-                        },
-                        ticks: {
-                            suggestedMin: 0,
-                            suggestedMax: 500,
-                            beginAtZero: true,
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                            color: "#fff"
-                        },
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
                     },
-                    x: {
-                    stacked: true,
-                        grid: {
-                            drawBorder: false,
-                            display: true,
-                            drawOnChartArea: true,
-                            drawTicks: false,
-                            borderDash: [5, 5],
-                            color: 'rgba(255, 255, 255, .2)'
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
                         },
-                        ticks: {
-                            display: true,
-                            color: '#f8f9fa',
-                            padding: 10,
-                            font: {
-                                size: 14,
-                                weight: 300,
-                                family: "Roboto",
-                                style: 'normal',
-                                lineHeight: 2
-                            },
-                        }
+                        color: "#fff"
                     },
                 },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        }
+    });
+
+    var bar2 = document.getElementById("chart-bar2").getContext("2d");
+
+    new Chart(bar2, {
+        type: "bar",
+        data: {
+            labels: ["UTI Cases"], // Single label for the category
+            datasets: [
+                {
+                    label: 'Kabasalan Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [15], // Data for Healthy
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Siay Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [10], // Data for Unhealthy
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Main Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [5], // Data for Unhealthy
+                    backgroundColor: 'rgba(102, 105, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+            ],
+        },
+        options: {
+            plugins: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+            },
+            responsive: true,
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                        color: "#fff"
+                    },
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        }
+    });
+
+    var bar3 = document.getElementById("chart-bar3").getContext("2d");
+
+    new Chart(bar3, {
+        type: "bar",
+        data: {
+            labels: ["Drug Test"], // Single label for the category
+            datasets: [
+                {
+                    label: 'Kabasalan Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [0], // Data for Healthy
+                    backgroundColor: 'rgba(75, 192, 192, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Siay Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [0], // Data for Unhealthy
+                    backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Main Campus',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [0], // Data for Unhealthy
+                    backgroundColor: 'rgba(102, 105, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+            ],
+        },
+        options: {
+            plugins: {
+                maintainAspectRatio: false,
+                legend: {
+                    display: true,
+                    position: 'top',
+                },
+            },
+            responsive: true,
+            scales: {
+                y: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 500,
+                        beginAtZero: true,
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                        color: "#fff"
+                    },
+                },
+                x: {
+                    grid: {
+                        drawBorder: false,
+                        display: true,
+                        drawOnChartArea: true,
+                        drawTicks: false,
+                        borderDash: [5, 5],
+                        color: 'rgba(255, 255, 255, .2)'
+                    },
+                    ticks: {
+                        display: true,
+                        color: '#f8f9fa',
+                        padding: 10,
+                        font: {
+                            size: 14,
+                            weight: 300,
+                            family: "Roboto",
+                            style: 'normal',
+                            lineHeight: 2
+                        },
+                    }
+                },
+            },
+        }
+    });
+
+    var doughnut1 = document.getElementById("doughnut-chart1").getContext("2d");
+
+    new Chart(doughnut1, {
+        type: "doughnut",
+        data: {
+            labels: [
+                "Leukemia",
+                "Kidney Disease",
+                "Diabetes",
+                "Tuberculosis",
+                "Pneumonia"
+            ],
+        datasets: [
+            {
+                label: "Complications",
+                data: [25, 13, 12, 37, 13], // Match the percentages in your table
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
+                    "rgba(75, 192, 192, 0.5)",
+                    "rgba(153, 102, 255, 0.5)",
+                ],
+                borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                ],
+                borderWidth: 1,
+            },
+        ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top",
+                },
+            },
+        }
+    });
+
+    var doughnut2 = document.getElementById("doughnut-chart2").getContext("2d");
+
+    new Chart(doughnut2, {
+        type: "doughnut",
+        data: {
+            labels: ["DevTo", "CreativeTim", "Bootsnip", "Github", "Codeinwp"],
+        datasets: [
+            {
+                label: "Affiliates Program",
+                data: [25, 13, 12, 37, 13], // Match the percentages in your table
+                backgroundColor: [
+                    "rgba(255, 99, 132, 0.5)",
+                    "rgba(54, 162, 235, 0.5)",
+                    "rgba(255, 206, 86, 0.5)",
+                    "rgba(75, 192, 192, 0.5)",
+                    "rgba(153, 102, 255, 0.5)",
+                ],
+                borderColor: [
+                    "rgba(255, 99, 132, 1)",
+                    "rgba(54, 162, 235, 1)",
+                    "rgba(255, 206, 86, 1)",
+                    "rgba(75, 192, 192, 1)",
+                    "rgba(153, 102, 255, 1)",
+                ],
+                borderWidth: 1,
+            },
+        ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: true,
+                    position: "top",
+                },
+            },
         }
     });
 

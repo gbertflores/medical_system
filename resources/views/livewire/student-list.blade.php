@@ -66,17 +66,10 @@
                                             <i class="material-icons">edit</i>
                                             <div class="ripple-container"></div>
                                         </a>
-                                        
-                                        <button type="button" class="btn btn-danger btn-link"
-                                            data-original-title="" title="">
-                                            <i class="material-icons">search</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
-                                        <button type="button" class="btn btn-secondary btn-link"
-                                            data-original-title="" title="">
-                                            <i class="material-icons">upload</i>
-                                            <div class="ripple-container"></div>
-                                        </button>
+                                        <a wire:click="showDetails('{{ $user['id'] }}')" class="btn btn-secondary btn-link"
+                                           data-original-title="Update Status" title="Update Status">
+                                            <i class="material-icons">east</i>
+                                        </a>
                                     </td>
                                 </tr>
                                 @endforeach
