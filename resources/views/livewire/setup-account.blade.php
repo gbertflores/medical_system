@@ -95,7 +95,7 @@
                                         <div class="row mt-4">
                                             <div class="col-6">
                                                 <div class="relative">
-                                                    <select wire:model.blur="campus_id" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                    <select wire:model.blur="campus_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
                                                         <option value="">Select Campus</option>
                                                         @foreach($campuses as $campus)
                                                             <option value="{{ $campus->id }}">{{ $campus->name }}</option>
@@ -107,24 +107,32 @@
                                                 </div>
                                             </div>
                                             <div class="col-6">
-                                                <div class="input-group input-group-outline @if(strlen($college ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">College</label>
-                                                    <input wire:model.live="college" type="text" class="form-control">
+                                                <div class="relative">
+                                                    <select wire:model.blur="college_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="college">
+                                                        <option value="">Select College</option>
+                                                        @foreach($colleges as $college)
+                                                            <option value="{{ $college->id }}">{{ $college->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('college_id')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('college')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
                                             </div>
                                         </div>
                                         <div class="row mt-4">
                                             <div class="col-6">
-                                                <div class="input-group input-group-outline @if(strlen($course ?? '') > 0) is-filled @endif">
-                                                    <label class="form-label">Course</label>
-                                                    <input wire:model.live="course" type="text" class="form-control">
+                                                <div class="relative">
+                                                    <select wire:model.blur="program_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="program">
+                                                        <option value="" disabled selected class="placeholder">Select Program</option>
+                                                        @foreach($programs as $program)
+                                                            <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    @error('program_id')
+                                                    <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                                                    @enderror
                                                 </div>
-                                                @error('course')
-                                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                                @enderror
                                             </div>
                                             <div class="col-6">
                                                 <div class="input-group input-group-outline @if(strlen($major ?? '') > 0) is-filled @endif">
@@ -148,7 +156,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="relative">
-                                                    <select wire:model.blur="year_level" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                    <select wire:model.blur="year_level" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
                                                         <option value="">Select Year Level</option>
                                                         <option value="1st year">1st year</option>
                                                         <option value="2nd year">2nd year</option>
@@ -162,7 +170,7 @@
                                             </div>
                                             <div class="col-4">
                                                 <div class="relative">
-                                                    <select wire:model.blur="status" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                    <select wire:model.blur="status" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
                                                         <option value="">Select Status</option>
                                                         <option value="Regular">Regular</option>
                                                         <option value="Irregular">Irregular</option>
@@ -187,7 +195,7 @@
                                             </div>
                                             <div class="col-3">
                                                 <div class="relative">
-                                                    <select wire:model.blur="sex" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                    <select wire:model.blur="sex" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
                                                         <option value="">Select sex</option>
                                                         <option value="Male">Male</option>
                                                         <option value="Female">Female</option>
@@ -199,7 +207,7 @@
                                             </div>
                                             <div class="col-3">
                                                 <div class="relative">
-                                                    <select wire:model.blur="blood_type" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                                    <select wire:model.blur="blood_type" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
                                                         <option value="">Select Blood Type</option>
                                                         <option value="A+">A+</option>
                                                         <option value="A-">A-</option>

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Appointment;
 use App\Models\Campus;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -19,6 +18,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CollegeSeeder::class);
         $this->call(ProgramSeeder::class);
         $this->call(UserSeeder::class);
-        Appointment::factory(10)->create();
     }
 }

@@ -54,11 +54,6 @@ class User extends Authenticatable
         return $this->role === $role;
     }
 
-    public function appointments()
-    {
-        return $this->hasMany(Appointment::class);
-    }
-
     public function profile()
     {
         return $this->hasOne(Profile::class);

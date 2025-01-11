@@ -21,13 +21,13 @@
                 <li class="nav-item">
                     <a class="nav-link d-flex align-items-center me-2 active" aria-current="page"
                         href="{{ route('dashboard') }}">
-                        <i class="fa fa-chart-pie opacity-6 text-dark me-1"></i>
+                        <i class="fa fa-chart-pie opacity-6 text-white me-1"></i>
                         Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link me-2" href="{{ route('profile') }}">
-                        <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                        <i class="fa fa-user opacity-6 text-white me-1"></i>
                         Profile
                     </a>
                 </li>
@@ -35,17 +35,25 @@
             </ul>
             <ul class="navbar-nav d-lg-flex">
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="{{ in_array(request()->route()->getName(), ['register','login', 'password.forgot','reset-password']) ? route('register') : 'static-sign-up' }}">
+                    <a class="nav-link me-2" href="{{route('medical-lookup') }}">
+                        <i class="fas fa-search opacity-6 text-white me-1"></i>
+                        Student Medical Lookup
+                    </a>
+                </li>
+                @guest
+                <li class="nav-item">
+                    <a class="nav-link me-2" href="{{ route('register') }}">
                         <i class="fas fa-user-circle opacity-6 text-white me-1"></i>
                         Sign Up
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link me-2" href="{{ in_array(request()->route()->getName(), ['register','login', 'password.forgot','reset-password']) ? route('login') : 'static-sign-in' }}">
+                    <a class="nav-link me-2" href="{{ route('login') }}">
                         <i class="fas fa-key opacity-6 text-white me-1"></i>
                         Sign In
                     </a>
                 </li>
+                @endguest
             </ul>
             @else
             <ul class="navbar-nav ms-auto">

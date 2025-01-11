@@ -13,12 +13,25 @@ return new class extends Migration
     {
         Schema::create('medical_results', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('appointment_id');
-            $table->string('file_name');
-            $table->string('file_url');
-            $table->string('test_type');
+            $table->foreignId('student_information_id');
+            $table->string('hematology')->nullable();
+            $table->string('hematology_abnormality')->nullable();
+            $table->text('hematology_remarks')->nullable();
+            $table->string('urinalysis')->nullable();
+            $table->string('urinalysis_abnormality')->nullable();
+            $table->text('urinalysis_remarks')->nullable();
+            $table->string('xray')->nullable();
+            $table->string('xray_abnormality')->nullable();
+            $table->text('xray_remarks')->nullable();
+            $table->string('drugtest')->nullable();
+            $table->string('drugtest_abnormality')->nullable();
+            $table->text('drugtest_remarks')->nullable();
+            $table->text('condition')->nullable();
+            $table->text('additional_comments')->nullable();
+            $table->string('result_file_path')->nullable();
+            $table->string('school_year');
+            $table->string('semester');
             $table->date('upload_date');
-            $table->string('remarks');
             $table->foreignId('reviewed_by')->index();
             $table->foreignId('uploaded_by')->index();
             $table->timestamps();

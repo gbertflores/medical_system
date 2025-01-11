@@ -152,7 +152,19 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-xs font-weight-bold"> 25% </span>
+                                    <span class="text-xs font-weight-bold"> {{$leukemiaStudentsCount}} </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Low Platelets</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> {{$lowPlateletsStudentsCount}} </span>
                                 </td>
                             </tr>
                             <tr>
@@ -164,7 +176,7 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-xs font-weight-bold"> 13% </span>
+                                    <span class="text-xs font-weight-bold"> {{$kidneyStudentsCount}} </span>
                                 </td>
                             </tr>
                             <tr>
@@ -176,19 +188,7 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-xs font-weight-bold"> 12% </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex px-2 py-1">
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">Tuberculosis</h6>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="align-middle text-center text-sm">
-                                    <span class="text-xs font-weight-bold"> 37% </span>
+                                    <span class="text-xs font-weight-bold"> {{$diabetesStudentsCount}} </span>
                                 </td>
                             </tr>
                             <tr>
@@ -200,7 +200,19 @@
                                     </div>
                                 </td>
                                 <td class="align-middle text-center text-sm">
-                                    <span class="text-xs font-weight-bold"> 13% </span>
+                                    <span class="text-xs font-weight-bold"> {{$pneumoniaStudentsCount}} </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm">Tuberculosis</h6>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="align-middle text-center text-sm">
+                                    <span class="text-xs font-weight-bold"> {{$tbStudentsCount}} </span>
                                 </td>
                             </tr>
                         </tbody>
@@ -209,37 +221,23 @@
             </div>
         </div>
     </div>
-    @if($first_access)
-    <div class="modal fade" id="autoOpenModal" tabindex="-1" aria-labelledby="autoOpenModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="autoOpenModalLabel">Welcome to School Medical System</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    Would you like to book an appointment for a medical examination?
-                </div>
-                <div class="modal-footer">
-                    <!-- Close Button -->
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    
-                    <!-- Book Now Button -->
-                    <a href="/book-appointment" class="btn btn-primary">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    @endif
 </div>
 
 @push('js')
 <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var myModal = new bootstrap.Modal(document.getElementById('autoOpenModal'));
-        myModal.show();
-    });
+    var totalStudentMedicalCount = @json($totalStudentMedicalCount);
+    var healthyStudentsCount = @json($healthyStudentsCount);
+    var uticasesCount = @json($uticasesCount);
+    var drugPositiveCount = @json($drugPositiveCount);
+    var leukemiaStudentsCount = @json($leukemiaStudentsCount);
+    var lowPlateletsStudentsCount = @json($lowPlateletsStudentsCount);
+    var kidneyStudentsCount = @json($kidneyStudentsCount);
+    var diabetesStudentsCount = @json($diabetesStudentsCount);
+    var pneumoniaStudentsCount = @json($pneumoniaStudentsCount);
+    var tbStudentsCount = @json($tbStudentsCount);
+
+    
     var bar = document.getElementById("chart-bar").getContext("2d");
 
     new Chart(bar, {
@@ -252,7 +250,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [80], // Data for Healthy
+                    data: [healthyStudentsCount],
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     maxBarThickness: 12
                 },
@@ -261,7 +259,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [20], // Data for Unhealthy
+                    data: [totalStudentMedicalCount - healthyStudentsCount],
                     backgroundColor: 'rgba(153, 102, 255, 0.6)',
                     maxBarThickness: 12
                 },
@@ -335,30 +333,48 @@
             labels: ["UTI Cases"], // Single label for the category
             datasets: [
                 {
-                    label: 'Kabasalan Campus',
+                    label: 'Kabasalan',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [15], // Data for Healthy
+                    data: [uticasesCount[3] !== undefined ? uticasesCount[3] : 0], // Data for Healthy
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     maxBarThickness: 12
                 },
                 {
-                    label: 'Siay Campus',
+                    label: 'Siay',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [10], // Data for Unhealthy
+                    data: [uticasesCount[2] !== undefined ? uticasesCount[2] : 0], // Data for Unhealthy
                     backgroundColor: 'rgba(153, 102, 255, 0.6)',
                     maxBarThickness: 12
                 },
                 {
-                    label: 'Main Campus',
+                    label: 'Main',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [5], // Data for Unhealthy
+                    data: [uticasesCount[1] !== undefined ? uticasesCount[1] : 0], // Data for Unhealthy
                     backgroundColor: 'rgba(102, 105, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Vitali',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [uticasesCount[5] !== undefined ? uticasesCount[5] : 0], // Data for Unhealthy
+                    backgroundColor: 'rgba(102, 255, 102, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Malangas',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [uticasesCount[4] !== undefined ? uticasesCount[4] : 0], // Data for Unhealthy
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
                     maxBarThickness: 12
                 },
             ],
@@ -431,30 +447,48 @@
             labels: ["Drug Test"], // Single label for the category
             datasets: [
                 {
-                    label: 'Kabasalan Campus',
+                    label: 'Kabasalan',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [0], // Data for Healthy
+                    data: [drugPositiveCount[3] !== undefined ? drugPositiveCount[3] : 0], // Data for Healthy
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     maxBarThickness: 12
                 },
                 {
-                    label: 'Siay Campus',
+                    label: 'Siay',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [0], // Data for Unhealthy
+                    data: [drugPositiveCount[2] !== undefined ? drugPositiveCount[2] : 0], // Data for Unhealthy
                     backgroundColor: 'rgba(153, 102, 255, 0.6)',
                     maxBarThickness: 12
                 },
                 {
-                    label: 'Main Campus',
+                    label: 'Main',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [0], // Data for Unhealthy
+                    data: [drugPositiveCount[1] !== undefined ? drugPositiveCount[1] : 0], // Data for Unhealthy
                     backgroundColor: 'rgba(102, 105, 255, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Vitali',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [drugPositiveCount[5] !== undefined ? drugPositiveCount[5] : 0], // Data for Unhealthy
+                    backgroundColor: 'rgba(102, 255, 102, 0.6)',
+                    maxBarThickness: 12
+                },
+                {
+                    label: 'Malangas',
+                    tension: 0.4,
+                    borderWidth: 0,
+                    borderSkipped: false,
+                    data: [drugPositiveCount[4] !== undefined ? drugPositiveCount[4] : 0], // Data for Unhealthy
+                    backgroundColor: 'rgba(255, 159, 64, 0.6)',
                     maxBarThickness: 12
                 },
             ],
@@ -526,21 +560,34 @@
         data: {
             labels: [
                 "Leukemia",
+                "Low Platelets",
                 "Kidney Disease",
                 "Diabetes",
+                "Pneumonia",
                 "Tuberculosis",
-                "Pneumonia"
+                "None of the above",
             ],
         datasets: [
             {
                 label: "Complications",
-                data: [25, 13, 12, 37, 13], // Match the percentages in your table
+                data: [
+                    leukemiaStudentsCount,
+                    lowPlateletsStudentsCount,
+                    kidneyStudentsCount,
+                    diabetesStudentsCount,
+                    pneumoniaStudentsCount,
+                    tbStudentsCount,
+                    totalStudentMedicalCount == 0? 1:
+                    totalStudentMedicalCount - leukemiaStudentsCount - lowPlateletsStudentsCount - kidneyStudentsCount - diabetesStudentsCount - pneumoniaStudentsCount - tbStudentsCount 
+                ], // Match the percentages in your table
                 backgroundColor: [
                     "rgba(255, 99, 132, 0.5)",
                     "rgba(54, 162, 235, 0.5)",
                     "rgba(255, 206, 86, 0.5)",
                     "rgba(75, 192, 192, 0.5)",
                     "rgba(153, 102, 255, 0.5)",
+                    "rgba(255, 159, 64, 0.5)",
+                    "rgba(163, 163, 163, 0.5)"
                 ],
                 borderColor: [
                     "rgba(255, 99, 132, 1)",
@@ -548,46 +595,8 @@
                     "rgba(255, 206, 86, 1)",
                     "rgba(75, 192, 192, 1)",
                     "rgba(153, 102, 255, 1)",
-                ],
-                borderWidth: 1,
-            },
-        ],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    display: true,
-                    position: "top",
-                },
-            },
-        }
-    });
-
-    var doughnut2 = document.getElementById("doughnut-chart2").getContext("2d");
-
-    new Chart(doughnut2, {
-        type: "doughnut",
-        data: {
-            labels: ["DevTo", "CreativeTim", "Bootsnip", "Github", "Codeinwp"],
-        datasets: [
-            {
-                label: "Affiliates Program",
-                data: [25, 13, 12, 37, 13], // Match the percentages in your table
-                backgroundColor: [
-                    "rgba(255, 99, 132, 0.5)",
-                    "rgba(54, 162, 235, 0.5)",
-                    "rgba(255, 206, 86, 0.5)",
-                    "rgba(75, 192, 192, 0.5)",
-                    "rgba(153, 102, 255, 0.5)",
-                ],
-                borderColor: [
-                    "rgba(255, 99, 132, 1)",
-                    "rgba(54, 162, 235, 1)",
-                    "rgba(255, 206, 86, 1)",
-                    "rgba(75, 192, 192, 1)",
-                    "rgba(153, 102, 255, 1)",
+                    "rgba(255, 159, 64, 1)",
+                    "rgba(28, 28, 28, 0.5)"
                 ],
                 borderWidth: 1,
             },

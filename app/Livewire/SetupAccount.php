@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\Campus;
+use App\Models\College;
 use App\Models\MedicalProfile;
 use App\Models\Profile;
+use App\Models\Program;
 use App\Models\StudentInformation;
 use Livewire\Component;
 
@@ -12,6 +14,8 @@ class SetupAccount extends Component
 {
     public $step = 1; // Initial step
     public $campuses;
+    public $colleges;
+    public $programs;
 
     public $last_name;
     public $first_name;
@@ -45,9 +49,9 @@ class SetupAccount extends Component
         'city' => 'required|string|max:255',
         'province' => 'required|string|max:255',
         'contact_number' => 'required|numeric|min:10',
-        'campus_id' => 'required|int',
-        'college' => 'required|string|max:255',
-        'course' => 'required|string|max:255',
+        'campus_id' => 'required|integer|exists:campuses,id',
+        'college_id' => 'required|integer|exists:colleges,id',
+        'program_id' => 'required|integer|exists:programs,id',
         'student_number' => 'required|string|max:255',
         'major' => 'nullable|string|max:255',
         'year_level' => 'required|string|max:50',
@@ -62,6 +66,8 @@ class SetupAccount extends Component
     public function mount()
     {
         $this->campuses = Campus::select('id', 'name')->get();
+        $this->colleges = College::select('id', 'name')->get();
+        $this->programs = Program::select('id', 'name')->get();
     }
 
     public function store()
@@ -112,7 +118,7 @@ class SetupAccount extends Component
         // Redirect to dashboard
         $this->js("alert('Done setting up!')");
 
-        return redirect('/dashboard')->with('first_access', true);
+        return redirect('/dashboard')->with(true);
     }
 
     public function render()

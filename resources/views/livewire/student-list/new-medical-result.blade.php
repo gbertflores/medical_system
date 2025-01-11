@@ -11,22 +11,22 @@
                     <div class="row mt-4">
                         <div class="col-6">
                             <p class="text-black">
-                                <span class="font-weight-bolder">Student Number:</span> {{$user->profile->zppsu_number}} <br>
-                                <span class="font-weight-bolder">Student Name:</span> {{$user->name}} <br>
-                                <span class="font-weight-bolder">Birthdate:</span> {{$user->profile->medical_profile->birthdate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <span class="font-weight-bolder">Student Number:</span> {{$selectedUser->profile->zppsu_number}} <br>
+                                <span class="font-weight-bolder">Student Name:</span> {{$selectedUser->name}} <br>
+                                <span class="font-weight-bolder">Birthdate:</span> {{$selectedUser->profile->medical_profile->birthdate}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 @php use Carbon\Carbon; @endphp
-                                <span class="font-weight-bolder">Age:</span> {{Carbon::parse($user->profile->medical_profile->birthdate)->age}}
+                                <span class="font-weight-bolder">Age:</span> {{Carbon::parse($selectedUser->profile->medical_profile->birthdate)->age}}
                             </p>
                         </div>
                         <div class="col-6">
                             <p class="text-black">
-                                <span class="font-weight-bolder">Course:</span> {{$user->student_information->program->name}} <br>
-                                <span class="font-weight-bolder">College:</span> {{$user->student_information->program->college->name}} <br>
-                                <span class="font-weight-bolder">Campus:</span> {{$user->student_information->campus->name}}
+                                <span class="font-weight-bolder">Course:</span> {{$selectedUser->student_information->program->name}} <br>
+                                <span class="font-weight-bolder">College:</span> {{$selectedUser->student_information->program->college->name}} <br>
+                                <span class="font-weight-bolder">Campus:</span> {{$selectedUser->student_information->campus->name}}
                             </p>
                         </div>
                     </div>
-                    <form wire:submit.prevent="store"> 
+                    <form wire:submit="store"> 
                         <div class="row mt-2">
                             <div class="col-2">
                                 Hematology
@@ -43,7 +43,7 @@
                             </div>
                             @if($hematology == 'abnormal')
                             <div class="col-3">
-                                <select wire:model.blur="abnormality_hematology" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="abnormality_hematology">
+                                <select wire:model.blur="hematology_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="hematology_abnormality">
                                     <option value="">Select Abnormality</option>
                                     <option value="low_rbc">Low RBC</option>
                                     <option value="high_wbc">High WBC</option>
@@ -53,7 +53,7 @@
                                     <option value="lymphoma">Lymphoma</option>
                                     <!-- Add more options as needed -->
                                 </select>
-                                @error('abnormality_hematology')
+                                @error('hematology_abnormality')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -84,7 +84,7 @@
                             </div>
                             @if($urinalysis == 'abnormal')
                             <div class="col-3">
-                                <select wire:model.blur="abnormality_urinalysis" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="abnormality_urinalysis">
+                                <select wire:model.blur="urinalysis_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="urinalysis_abnormality">
                                     <option value="">Select Abnormality</option>
                                     <option value="uti">UTI</option>
                                     <option value="kidney_disease">Kidney Disease</option>
@@ -94,7 +94,7 @@
                                     <option value="bladder_stones">Bladder Stones</option>
                                     <!-- Add more options as needed -->
                                 </select>
-                                @error('abnormality_urinalysis')
+                                @error('urinalysis_abnormality')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -125,7 +125,7 @@
                             </div>
                             @if($xray == 'abnormal')
                             <div class="col-3">
-                                <select wire:model.blur="abnormality_xray" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="abnormality_xray">
+                                <select wire:model.blur="xray_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="xray_abnormality">
                                     <option value="">Select Abnormality</option>
                                     <option value="tubercolosis">Tuberculosis</option>
                                     <option value="pneumonia">Pneumonia</option>
@@ -134,7 +134,7 @@
                                     <option value="copd">Chronic Obstructive Pulmonary Disease</option>
                                     <!-- Add more options as needed -->
                                 </select>
-                                @error('abnormality_xray')
+                                @error('xray_abnormality')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -165,13 +165,13 @@
                             </div>
                             @if($drugtest == 'positive')
                             <div class="col-3">
-                                <select wire:model.blur="abnormality_drugtest" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="abnormality_drugtest">
+                                <select wire:model.blur="drugtest_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="drugtest_abnormality">
                                     <option value="">Select Abnormality</option>
                                     <option value="substance_abuse">Substance abuse</option>
                                     <option value="drug_abuse">Prescription drug abuse</option>
                                     <option value="alcohol_use">Alcohol use</option>
                                 </select>
-                                @error('abnormality_drugtest')
+                                @error('drugtest_abnormality')
                                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                                 @enderror
                             </div>
@@ -209,23 +209,23 @@
                         <div class="row mt-4 px-6">
                             <div class="custom-file-upload">
                                 <input 
-                                    wire:model="hematology_file" 
+                                    wire:model="result_file" 
                                     type="file" 
                                     class="form-control d-none" 
-                                    id="hematology_file"
+                                    id="result_file"
                                     accept=".pdf,.jpg,.jpeg,.png"
                                 >
-                                <label for="hematology_file" class="upload-label">
+                                <label for="result_file" class="upload-label">
                                     Choose Files
                                 </label>
                                 <span class="file-name mt-1">
-                                    @if($hematology_file)
-                                        {{ $hematology_file->getClientOriginalName() }}
+                                    @if($result_file)
+                                        {{ $result_file->getClientOriginalName() }}
                                     @else
                                         No file selected
                                     @endif
                                 </span>
-                                @error('hematology_file')
+                                @error('result_file')
                                 <p class="text-danger mt-1">{{ $message }}</p>
                                 @enderror
                             </div>

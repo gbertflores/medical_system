@@ -7,8 +7,57 @@
                         <h4 class="text-white mx-3"><strong>Students List</strong></h6>
                     </div>
                 </div>
-                <div class=" me-3 my-3 text-end">
-                    <a class="btn bg-gradient-dark mb-0" href="javascript:;"><i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Record</a>
+
+                <!-- Filter and Search Section -->
+                <div class="row mb-3 mx-3 my-3 pb-2">
+                    <!-- Campus Filter -->
+                    <div class="col-12 col-md-4">
+                        <div class="relative">
+                            <select wire:model.live="campus_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
+                                <option value="" disabled selected class="placeholder">Select Campus</option>
+                                @foreach($campuses as $campus)
+                                    <option value="{{ $campus->id }}">{{ $campus->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('campus_id')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- Program Filter -->
+                    <div class="col-12 col-md-4">
+                        <div class="relative">
+                            <select wire:model.live="program_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="program">
+                                <option value="" disabled selected class="placeholder">Select Program</option>
+                                @foreach($programs as $program)
+                                    <option value="{{ $program->id }}">{{ $program->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('program_id')
+                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                            @enderror
+                        </div>
+                    </div>
+
+                    <!-- search with Button -->
+                    <div class="col-12 col-md-4">
+                        <div class="d-flex">
+                            <div class="input-group input-group-outline @if(strlen($search ?? '') > 0) is-filled @endif">
+                                <input wire:model.live="search" type="text" class="form-control" placeholder="Search">
+                            </div>
+                        </div>
+                        @error('search')
+                            <p class="text-danger inputerror">{{ $message }}</p>
+                        @enderror
+                    </div>
+                </div>
+
+                <!-- Add New Record Button -->
+                <div class="me-3 my-3 text-end">
+                    <a class="btn bg-gradient-dark mb-0" href="javascript:;">
+                        <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Record
+                    </a>
                 </div>
                 <div class="card-body-fit px-0 pb-2">
                     <div class="table-responsive p-0">
@@ -45,7 +94,9 @@
                                     </td>
                                     <td class="align-middle text-center">
                                         <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="mb-0 text-sm">2024-20212</h6>
+                                            <h6 class="mb-0 text-sm">
+                                                {{ $user->profile ? $user->profile->zppsu_number : 'No Profile Available' }}
+                                            </h6>
                                         </div>
                                     </td>
                                     <td>
@@ -57,7 +108,7 @@
                                         <p class="text-xs text-secondary mb-0">{{ $user->email }}</p>
                                     </td>
                                     <td class="align-middle text-center">
-                                        <span class="text-secondary text-xs font-weight-bold">22/03/18</span>
+                                        <span class="text-secondary text-xs font-weight-bold">{{ $user->created_at }}</span>
                                     </td>
                                     <td class="align-middle">
                                         <a rel="tooltip" class="btn btn-success btn-link"
@@ -69,6 +120,7 @@
                                         <a wire:click="showDetails('{{ $user['id'] }}')" class="btn btn-secondary btn-link"
                                            data-original-title="Update Status" title="Update Status">
                                             <i class="material-icons">east</i>
+                                            <!-- <i class="material-icons">east</i> -->
                                         </a>
                                     </td>
                                 </tr>
