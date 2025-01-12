@@ -16,9 +16,9 @@ class StudentList extends Component
     public $colleges;
     public $programs;
 
-    public $campus_id = null;
-    public $program_id = null;
-    public $search = null;
+    public $campus_id = 0;
+    public $program_id = 0;
+    public $search = '';
     public $users = [];
 
     public function mount()

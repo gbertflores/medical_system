@@ -14,7 +14,7 @@
                     <div class="col-12 col-md-4">
                         <div class="relative">
                             <select wire:model.live="campus_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="campus">
-                                <option value="" disabled selected class="placeholder">Select Campus</option>
+                                <option value="0" disabled selected class="placeholder">Select Campus</option>
                                 @foreach($campuses as $campus)
                                     <option value="{{ $campus->id }}">{{ $campus->name }}</option>
                                 @endforeach
@@ -29,7 +29,7 @@
                     <div class="col-12 col-md-4">
                         <div class="relative">
                             <select wire:model.live="program_id" class="form-select border border-1 p-2 px-2-5" data-style="select-with-transition" title="" data-size="100" id="program">
-                                <option value="" disabled selected class="placeholder">Select Program</option>
+                                <option value="0" disabled selected class="placeholder">Select Program</option>
                                 @foreach($programs as $program)
                                     <option value="{{ $program->id }}">{{ $program->name }}</option>
                                 @endforeach
@@ -56,7 +56,7 @@
                 <!-- Add New Record Button -->
                 <div class="me-3 my-3 text-end">
                     <a class="btn bg-gradient-dark mb-0" href="javascript:;">
-                        <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New Record
+                        <i class="material-icons text-sm">add</i>&nbsp;&nbsp;Add Student
                     </a>
                 </div>
                 <div class="card-body-fit px-0 pb-2">
@@ -85,7 +85,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $index => $user)
+                                @forelse ($users as $index => $user)
                                 <tr>
                                     <td class="align-middle text-center">
                                         <div class="d-flex flex-column justify-content-center">
@@ -124,7 +124,13 @@
                                         </a>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="12" class="text-center">
+                                            <p class="text-sm text-muted my-2">No records found.</p>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

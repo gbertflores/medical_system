@@ -4,11 +4,12 @@
             <div class="card my-4">
                 <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                     <div class="bg-gradient-primary border-radius-lg pt-4 pb-3">
-                        <h4 class="text-white mx-3"><strong>New Medical Result</strong></h6>
+                        <h4 class="text-white mx-3"><strong>New Medical Result</strong></h4>
                     </div>
                 </div>  
                 <div class="container-fluid mx-2">           
                     <div class="row mt-4">
+                        <!-- Student Details Section -->
                         <div class="col-6">
                             <p class="text-black">
                                 <span class="font-weight-bolder">Student Number:</span> {{$selectedUser->profile->zppsu_number}} <br>
@@ -26,175 +27,116 @@
                             </p>
                         </div>
                     </div>
-                    <form wire:submit="store"> 
-                        <div class="row mt-2">
-                            <div class="col-2">
-                                Hematology
-                            </div>
-                            <div class="col-2">
-                                <select wire:model.lazy="hematology" class="form-select border border-1 p-2 ps-2">
-                                    <option value="">Select Result</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="abnormal">Abnormal</option>
-                                </select>
-                                @error('hematology')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @if($hematology == 'abnormal')
-                            <div class="col-3">
-                                <select wire:model.blur="hematology_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="hematology_abnormality">
-                                    <option value="">Select Abnormality</option>
-                                    <option value="low_rbc">Low RBC</option>
-                                    <option value="high_wbc">High WBC</option>
-                                    <option value="low_wbc">Low WBC</option>
-                                    <option value="low_platelets">Low Platelets</option>
-                                    <option value="leukemia">Leukemia</option>
-                                    <option value="lymphoma">Lymphoma</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                                @error('hematology_abnormality')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @endif
-                            <div class="col-5">
-                                <div class="input-group input-group-outline @if(!empty($remarks_hematology)) is-filled @endif">
-                                    <label class="form-label">Remarks</label>
-                                    <input wire:model.live="remarks_hematology" type="text" class="form-control">
-                                </div>
-                                @error('remarks_hematology')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-2">
-                                Urinalysis
-                            </div>
-                            <div class="col-2">
-                                <select wire:model.lazy="urinalysis" class="form-select border border-1 p-2 ps-2">
-                                    <option value="">Select Result</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="abnormal">Abnormal</option>
-                                </select>
-                                @error('urinalysis')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @if($urinalysis == 'abnormal')
-                            <div class="col-3">
-                                <select wire:model.blur="urinalysis_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="urinalysis_abnormality">
-                                    <option value="">Select Abnormality</option>
-                                    <option value="uti">UTI</option>
-                                    <option value="kidney_disease">Kidney Disease</option>
-                                    <option value="diabetes">Diabetes</option>
-                                    <option value="dehydration">Dehydration</option>
-                                    <option value="kidney_stones">Kidney Stones</option>
-                                    <option value="bladder_stones">Bladder Stones</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                                @error('urinalysis_abnormality')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @endif
-                            <div class="col-5">
-                                <div class="input-group input-group-outline @if(!empty($remarks_urinalysis)) is-filled @endif">
-                                    <label class="form-label">Remarks</label>
-                                    <input wire:model.live="remarks_urinalysis" type="text" class="form-control">
-                                </div>
-                                @error('remarks_urinalysis')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-2">
-                                XRay
-                            </div>
-                            <div class="col-2">
-                                <select wire:model.lazy="xray" class="form-select border border-1 p-2 ps-2">
-                                    <option value="">Select Result</option>
-                                    <option value="normal">Normal</option>
-                                    <option value="abnormal">Abnormal</option>
-                                </select>
-                                @error('xray')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @if($xray == 'abnormal')
-                            <div class="col-3">
-                                <select wire:model.blur="xray_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="xray_abnormality">
-                                    <option value="">Select Abnormality</option>
-                                    <option value="tubercolosis">Tuberculosis</option>
-                                    <option value="pneumonia">Pneumonia</option>
-                                    <option value="broken_bones">Broken bones</option>
-                                    <option value="lung_cancer">Lung cancer</option>
-                                    <option value="copd">Chronic Obstructive Pulmonary Disease</option>
-                                    <!-- Add more options as needed -->
-                                </select>
-                                @error('xray_abnormality')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @endif
-                            <div class="col-5">
-                                <div class="input-group input-group-outline @if(!empty($remarks_xray)) is-filled @endif">
-                                    <label class="form-label">Remarks</label>
-                                    <input wire:model.live="remarks_xray" type="text" class="form-control">
-                                </div>
-                                @error('remarks_xray')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        <div class="row mt-2">
-                            <div class="col-2">
-                                Drug Test
-                            </div>
-                            <div class="col-2">
-                                <select wire:model.lazy="drugtest" class="form-select border border-1 p-2 ps-2">
-                                    <option value="">Select Result</option>
-                                    <option value="positive">Positive</option>
-                                    <option value="negative">Negative</option>
-                                </select>
-                                @error('drugtest')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @if($drugtest == 'positive')
-                            <div class="col-3">
-                                <select wire:model.blur="drugtest_abnormality" class="form-select border border-1 p-2 ps-2" data-style="select-with-transition" title="" data-size="100" id="drugtest_abnormality">
-                                    <option value="">Select Abnormality</option>
-                                    <option value="substance_abuse">Substance abuse</option>
-                                    <option value="drug_abuse">Prescription drug abuse</option>
-                                    <option value="alcohol_use">Alcohol use</option>
-                                </select>
-                                @error('drugtest_abnormality')
-                                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            @endif
-                            <div class="col-5">
-                                <div class="input-group input-group-outline @if(!empty($remarks_drugtest)) is-filled @endif">
-                                    <label class="form-label">Remarks</label>
-                                    <input wire:model.live="remarks_drugtest" type="text" class="form-control">
-                                </div>
-                                @error('remarks_drugtest')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
-                                @enderror
-                            </div>
-                        </div>
-                        
 
+                    <!-- Medical Results Form -->
+                    <form wire:submit="store"> 
+                        @php
+                            $tests = [
+                                'Hematology' => [
+                                    'model' => 'hematology',
+                                    'abnormalities' => [
+                                        'Anemia',              // Common in students due to dietary issues.
+                                        'Leukocytosis',        // May indicate infection or inflammation.
+                                        'Leukopenia',          // Reflects potential immune deficiencies.
+                                        'Thrombocytopenia'     // Indicates low platelet count affecting clotting.
+                                    ]
+                                ],
+                                'Urinalysis' => [
+                                    'model' => 'urinalysis',
+                                    'abnormalities' => [
+                                        'UTI',                 // Urinary tract infections, common in youth.
+                                        'Dehydration',         // Common among students due to inadequate water intake.
+                                        'Kidney Disease',      // Relevant for identifying chronic issues early.
+                                        'Diabetes',            // Growing concern among youth due to lifestyle.
+                                        'Bladder Infection',   // Focused on urinary health.
+                                        'Proteinuria'          // Early indicator of kidney issues or dehydration.
+                                    ]
+                                ],
+                                'XRay' => [
+                                    'model' => 'xray',
+                                    'abnormalities' => [
+                                        'Tuberculosis',        // Essential for public health and contagious diseases.
+                                        'Pneumonia',           // Relevant in screening for respiratory conditions.
+                                        'Broken Bones',        // Occasionally relevant for reporting accidents or past injuries.
+                                        'Lung Scarring',       // Indicator of past lung conditions, including infections.
+                                        'COPD'                 // Less likely but still checked in smokers or for chronic issues.
+                                    ]
+                                ],
+                                'Ishihara Test' => [
+                                    'model' => 'ishihara',
+                                    'abnormalities' => [
+                                        'Mild CVD',            // Mild Color Vision Deficiency.
+                                        'Moderate CVD',        // Moderate Color Vision Deficiency.
+                                        'Severe CVD',          // Severe Color Vision Deficiency.
+                                        'No Color Vision'      // Complete color blindness.
+                                    ]
+                                ],
+                                'Drug Test' => [
+                                    'model' => 'drugtest',
+                                    'abnormalities' => [
+                                        'Substance Abuse',     // Directly relevant for student fitness.
+                                        'Prescription Drug Abuse', // Includes abuse of prescribed medications.
+                                        'Illegal Drug Use'     // Screening for prohibited substances.
+                                    ]
+                                ]
+
+                            ];
+                        @endphp
+
+                        @foreach ($tests as $test => $data)
+                            <div class="row mt-2">
+                                <div class="col-2">
+                                    {{ $test }}
+                                </div>
+                                <div class="col-2">
+                                    <select wire:model.lazy="{{ $data['model'] }}_result" class="form-select border border-1 p-2 ps-2">
+                                        <option value="">Select Result</option>
+                                        @if ($test != 'Drug Test')
+                                        <option value="Normal">Normal</option>
+                                        <option value="Abnormal">Abnormal</option>
+                                        @else
+                                        <option value="Positive">Positive</option>
+                                        <option value="Negative">Negative</option>
+                                        @endif
+                                    </select>
+                                    @error($data['model'] . '_result')
+                                        <p class="text-danger text-sm mt-1">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                @if (${$data['model'] . '_result'} == 'Abnormal' || ${$data['model'] . '_result'} == 'Positive')
+                                    <div class="col-3">
+                                        <select wire:model.blur="{{ $data['model'] . '_abnormality' }}" class="form-select border border-1 p-2 ps-2">
+                                            <option value="">Select Abnormality</option>
+                                            @foreach ($data['abnormalities'] as $abnormality)
+                                                <option value="{{ $abnormality }}">{{ $abnormality }}</option>
+                                            @endforeach
+                                        </select>
+                                        @error($data['model'] . '_abnormality')
+                                            <p class="text-danger text-sm mt-1">{{ $message }}</p>
+                                        @enderror
+                                    </div>
+                                @endif
+                                <div class="col-5">
+                                    <div class="input-group input-group-outline @if(!empty(${'remarks_' . $data['model']})) is-filled @endif">
+                                        <label class="form-label">Remarks</label>
+                                        <input wire:model.live="remarks_{{ $data['model'] }}" type="text" class="form-control">
+                                    </div>
+                                    @error('remarks_' . $data['model'])
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                            </div>
+                        @endforeach
+
+
+                        <!-- Additional Comments Section -->
                         <div class="row mt-4">
                             <div class="col-6">
                                 <div class="input-group input-group-outline @if(strlen($condition ?? '') > 0) is-filled @endif">
                                     <textarea wire:model.live="condition" class="form-control" rows="4" placeholder="Enter student's condition"></textarea>
                                 </div>
                                 @error('condition')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="col-6">
@@ -202,36 +144,27 @@
                                     <textarea wire:model.live="additional_comments" class="form-control" rows="4" placeholder="Additional Comments"></textarea>
                                 </div>
                                 @error('additional_comments')
-                                <p class='text-danger inputerror'>{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
+
+                        <!-- File Upload Section -->
                         <div class="row mt-4 px-6">
                             <div class="custom-file-upload">
-                                <input 
-                                    wire:model="result_file" 
-                                    type="file" 
-                                    class="form-control d-none" 
-                                    id="result_file"
-                                    accept=".pdf,.jpg,.jpeg,.png"
-                                >
-                                <label for="result_file" class="upload-label">
-                                    Choose Files
-                                </label>
-                                <span class="file-name mt-1">
-                                    @if($result_file)
-                                        {{ $result_file->getClientOriginalName() }}
-                                    @else
-                                        No file selected
-                                    @endif
-                                </span>
-                                @error('result_file')
-                                <p class="text-danger mt-1">{{ $message }}</p>
-                                @enderror
+                                <input wire:model="result_file" type="file" class="form-control d-none" id="result_file" accept=".pdf,.jpg,.jpeg,.png">
+                                <label for="result_file" class="upload-label">Choose Files</label>
                             </div>
+                            @error('result_file')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         </div>
-                        <div class="text-center">
-                            <button type="submit" class="btn bg-gradient-primary w-33 my-4 mb-2">Submit</button>
+
+                        <!-- Submit Button -->
+                        <div class="row mt-4">
+                            <div class="col-12 text-end">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -14,16 +14,19 @@ return new class extends Migration
         Schema::create('medical_results', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_information_id');
-            $table->string('hematology')->nullable();
+            $table->string('hematology_result')->nullable();
             $table->string('hematology_abnormality')->nullable();
             $table->text('hematology_remarks')->nullable();
-            $table->string('urinalysis')->nullable();
+            $table->string('urinalysis_result')->nullable();
             $table->string('urinalysis_abnormality')->nullable();
             $table->text('urinalysis_remarks')->nullable();
-            $table->string('xray')->nullable();
+            $table->string('xray_result')->nullable();
             $table->string('xray_abnormality')->nullable();
             $table->text('xray_remarks')->nullable();
-            $table->string('drugtest')->nullable();
+            $table->string('ishihara_result')->nullable();
+            $table->string('ishihara_abnormality')->nullable();
+            $table->text('ishihara_remarks')->nullable();
+            $table->string('drugtest_result')->nullable();
             $table->string('drugtest_abnormality')->nullable();
             $table->text('drugtest_remarks')->nullable();
             $table->text('condition')->nullable();

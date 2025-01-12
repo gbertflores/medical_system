@@ -23,10 +23,10 @@ class Dashboard extends Component
     {
         $this->totalStudentMedicalCount = MedicalResults::count();
 
-        $this->healthyStudentsCount = MedicalResults::where('hematology', 'normal')
-            ->where('urinalysis', 'normal')
-            ->where('xray', 'normal')
-            ->where('drugtest', 'negative')
+        $this->healthyStudentsCount = MedicalResults::where('hematology_result', 'normal')
+            ->where('urinalysis_result', 'normal')
+            ->where('xray_result', 'normal')
+            ->where('drugtest_result', 'negative')
             ->where('school_year', now()->month <= 6 ? (now()->year - 1) . '-' . now()->year : now()->year . '-' . (now()->year + 1))
             ->where('semester', now()->month <= 6 ? '2nd sem' : '1st sem')
             ->count();
@@ -41,7 +41,7 @@ class Dashboard extends Component
                 return [$campusId => $items->count()]; // Count items per campus
             });
 
-        $this->drugPositiveCount = MedicalResults::where('drugtest', 'positive')
+        $this->drugPositiveCount = MedicalResults::where('drugtest_result', 'positive')
             ->where('school_year', now()->month <= 6 ? (now()->year - 1) . '-' . now()->year : now()->year . '-' . (now()->year + 1))
             ->where('semester', now()->month <= 6 ? '2nd sem' : '1st sem')
             ->with('student_information')

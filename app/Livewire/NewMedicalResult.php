@@ -16,38 +16,44 @@ class NewMedicalResult extends Component
     
     public $selectedUser;
 
-    public $hematology = 'normal';
+    public $hematology_result = 'Normal';
     public $hematology_abnormality;
-    public $remarks_hematology;
-    public $urinalysis = 'normal';
+    public $hematology_remarks;
+    public $urinalysis_result = 'Normal';
     public $urinalysis_abnormality;
-    public $remarks_urinalysis;
-    public $xray = 'normal';
+    public $urinalysis_remarks;
+    public $xray_result = 'Normal';
     public $xray_abnormality;
-    public $remarks_xray;
-    public $drugtest = 'negative';
+    public $xray_remarks;
+    public $ishihara_result = 'Normal';
+    public $ishihara_abnormality;
+    public $ishihara_remarks;
+    public $drugtest_result = 'Negative';
     public $drugtest_abnormality;
-    public $remarks_drugtest;
+    public $drugtest_remarks;
     public $condition;
     public $additional_comments;
-    public $result_file;
+    public $file;
 
     protected $rules = [
-        'hematology' => 'required|string',
-        'hematology_abnormality' => 'required_if:hematology,abnormal|string|nullable',
-        'remarks_hematology' => 'nullable|string',
-        'urinalysis' => 'required|string',
-        'urinalysis_abnormality' => 'required_if:urinalysis,abnormal|string|nullable',
-        'remarks_urinalysis' => 'nullable|string',
-        'xray' => 'required|string',
-        'xray_abnormality' => 'required_if:xray,abnormal|string|nullable',
-        'remarks_xray' => 'nullable|string',
-        'drugtest' => 'required|string',
-        'drugtest_abnormality' => 'required_if:drugtest,positive|string|nullable',
-        'remarks_drugtest' => 'nullable|string',
+        'hematology_result' => 'required|string',
+        'hematology_abnormality' => 'required_if:hematology_result,abnormal|string|nullable',
+        'hematology_remarks' => 'nullable|string',
+        'urinalysis_result' => 'required|string',
+        'urinalysis_abnormality' => 'required_if:urinalysis_result,abnormal|string|nullable',
+        'urinalysis_remarks' => 'nullable|string',
+        'xray_result' => 'required|string',
+        'xray_abnormality' => 'required_if:xray_result,abnormal|string|nullable',
+        'xray_remarks' => 'nullable|string',
+        'ishihara_result' => 'required|string',
+        'ishihara_abnormality' => 'required_if:ishihara_result,abnormal|string|nullable',
+        'ishihara_remarks' => 'nullable|string',
+        'drugtest_result' => 'required|string',
+        'drugtest_abnormality' => 'required_if:drugtest_result,positive|string|nullable',
+        'drugtest_remarks' => 'nullable|string',
         'condition' => 'nullable|string',
         'additional_comments' => 'nullable|string',
-        'result_file' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        'file' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
     ];
 
     public function store()
@@ -55,27 +61,30 @@ class NewMedicalResult extends Component
         $this->validate();
 
         // Save the file if uploaded
-        if ($this->result_file) {
-            $filePath = $this->result_file->store('documents', 'public');
+        if ($this->file) {
+            $filePath = $this->file->store('documents', 'public');
         }
 
         // Example of storing data (adjust to your database structure)
         $medical_result = $this->selectedUser->student_information->medical_results()->create([
-            'hematology' => $this->hematology,
+            'hematology_result' => $this->hematology_result,
             'hematology_abnormality' => $this->hematology_abnormality,
-            'remarks_hematology' => $this->remarks_hematology,
-            'urinalysis' => $this->urinalysis,
+            'hematology_remarks' => $this->hematology_remarks,
+            'urinalysis_result' => $this->urinalysis_result,
             'urinalysis_abnormality' => $this->urinalysis_abnormality,
-            'remarks_urinalysis' => $this->remarks_urinalysis,
-            'xray' => $this->xray,
+            'urinalysis_remarks' => $this->urinalysis_remarks,
+            'xray_result' => $this->xray_result,
             'xray_abnormality' => $this->xray_abnormality,
-            'remarks_xray' => $this->remarks_xray,
-            'drugtest' => $this->drugtest,
+            'xray_remarks' => $this->xray_remarks,
+            'ishihara_result' => $this->ishihara_result,
+            'ishihara_abnormality' => $this->ishihara_abnormality,
+            'ishihara_remarks' => $this->ishihara_remarks,
+            'drugtest_result' => $this->drugtest_result,
             'drugtest_abnormality' => $this->drugtest_abnormality,
-            'remarks_drugtest' => $this->remarks_drugtest,
+            'drugtest_remarks' => $this->drugtest_remarks,
             'condition' => $this->condition,
             'additional_comments' => $this->additional_comments,
-            'result_file_path' => $filePath ?? null,
+            'file_path' => $filePath ?? null,
             'semester' => now()->month <= 6 ? '2nd sem' : '1st sem',
             'school_year' => now()->month <= 6 ? (now()->year - 1) . '-' . now()->year : now()->year . '-' . (now()->year + 1),
             'upload_date' => now(),

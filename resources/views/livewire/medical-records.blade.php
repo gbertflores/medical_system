@@ -28,7 +28,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($medical_results as $index => $medical_result)
+                                @forelse ($medical_results as $index => $medical_result)
                                 <tr>
                                     <td class="align-middle text-center">
                                         <div class="d-flex flex-column justify-content-center">
@@ -51,13 +51,16 @@
                                         </div>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->hematology }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->hematology_result }}</p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->urinalysis }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->urinalysis_result }}</p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
-                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->xray }}</p>
+                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->xray_result }}</p>
+                                    </td>
+                                    <td class="align-middle text-center text-sm">
+                                        <p class="text-xs text-secondary mb-0">{{ $medical_result->ishihara_result }}</p>
                                     </td>
                                     <td class="align-middle">
                                         <a wire:click="downloadFile('{{ $medical_result['id'] }}')" class="btn btn-success btn-link"
@@ -78,7 +81,13 @@
                                         </a>
                                     </td>
                                 </tr>
-                                @endforeach
+                                @empty
+                                    <tr>
+                                        <td colspan="12" class="text-center">
+                                            <p class="text-sm text-muted my-2">No records found.</p>
+                                        </td>
+                                    </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
@@ -101,16 +110,20 @@
                         <strong>Semester:</strong> {{ $selectedMedicalRecord->semester }}<br>
                     </p>
                     <p>
-                        <strong>Hematology Result:</strong> {{ $selectedMedicalRecord->hematology }}{{ $selectedMedicalRecord->hematology=='normal'?'':', ' }}{{ $selectedMedicalRecord->hematology_abnormality }}<br>
+                        <strong>Hematology Result:</strong> {{ $selectedMedicalRecord->hematology_result }}{{ $selectedMedicalRecord->hematology_result=='normal'?'':', ' }}{{ $selectedMedicalRecord->hematology_abnormality }}<br>
                         <strong>Hematology Remarks:</strong> {{ $selectedMedicalRecord->hematology_remarks??'None' }}
                     </p>
                     <p>
-                        <strong>Urinalysis Result:</strong> {{ $selectedMedicalRecord->urinalysis }}{{ $selectedMedicalRecord->urinalysis=='normal'?'':', ' }}{{ $selectedMedicalRecord->urinalysis_abnormality }}<br>
+                        <strong>Urinalysis Result:</strong> {{ $selectedMedicalRecord->urinalysis_result }}{{ $selectedMedicalRecord->urinalysis_result=='normal'?'':', ' }}{{ $selectedMedicalRecord->urinalysis_abnormality }}<br>
                         <strong>Urinalysis Remarks:</strong> {{ $selectedMedicalRecord->urinalysis_remarks??'None' }}
                     </p>
                     <p>
-                        <strong>X-ray Result:</strong> {{ $selectedMedicalRecord->xray }}{{ $selectedMedicalRecord->xray=='normal'?'':', ' }}{{ $selectedMedicalRecord->xray_abnormality }}<br>
+                        <strong>X-ray Result:</strong> {{ $selectedMedicalRecord->xray_result }}{{ $selectedMedicalRecord->xray_result=='normal'?'':', ' }}{{ $selectedMedicalRecord->xray_abnormality }}<br>
                         <strong>X-ray Remarks:</strong> {{ $selectedMedicalRecord->xray_remarks??'None' }}
+                    </p>
+                    <p>
+                        <strong>Ishihara Result:</strong> {{ $selectedMedicalRecord->ishihara_result }}{{ $selectedMedicalRecord->ishihara_result=='normal'?'':', ' }}{{ $selectedMedicalRecord->ishihara_abnormality }}<br>
+                        <strong>Ishihara Remarks:</strong> {{ $selectedMedicalRecord->ishihara_remarks??'None' }}
                     </p>
                     <br>
                     <p><strong>General Condition:</strong> {{ $selectedMedicalRecord->condition??'None' }}</p>

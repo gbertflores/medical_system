@@ -37,7 +37,7 @@
         </div>
         <p>This is to certify that<br>
             <h2>{{ $studentName }}</h2><br>
-            a <strong>{{ $yearLevel }} year</strong> {{ $course }} student of this university<br>
+            a <strong>{{ $yearLevel }} year</strong> {{ $course }} student of this university
             has undergone a medical examination on<br>
             <h3>{{ $dateReleased }}</h3><br>
             and has been found fit for academic activities.<br>

@@ -11,4 +11,8 @@ class College extends Model
         'name',
         'abbreviation'
     ];
+
+    public function programs() {
+        return $this->hasMany(Program::class);
+    }
 }
