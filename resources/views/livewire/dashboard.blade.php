@@ -16,6 +16,7 @@
                         <p class="mb-0 text-sm text-bold">Main Campus</p>
                     </div>
                 </div>
+                
             </div>
             <div class="col-xl-2-5 mb-xl-0 mb-4">
                 <div class="card">
