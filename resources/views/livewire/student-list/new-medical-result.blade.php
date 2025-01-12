@@ -154,6 +154,13 @@
                             <div class="custom-file-upload">
                                 <input wire:model="result_file" type="file" class="form-control d-none" id="result_file" accept=".pdf,.jpg,.jpeg,.png">
                                 <label for="result_file" class="upload-label">Choose Files</label>
+                                <span class="file-name mt-1">
+                                    @if($result_file)
+                                        {{ $result_file->getClientOriginalName() }}
+                                    @else
+                                        No file selected
+                                    @endif
+                                </span>
                             </div>
                             @error('result_file')
                                 <p class="text-danger">{{ $message }}</p>

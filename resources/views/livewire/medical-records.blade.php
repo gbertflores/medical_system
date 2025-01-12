@@ -24,6 +24,7 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">HEMATOLOGY</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">URINALYSIS</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">XRAY</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ISHIHARA</th>
                                     <th class="text-secondary opacity-7"></th>
                                 </tr>
                             </thead>

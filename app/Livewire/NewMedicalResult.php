@@ -33,7 +33,7 @@ class NewMedicalResult extends Component
     public $drugtest_remarks;
     public $condition;
     public $additional_comments;
-    public $file;
+    public $result_file;
 
     protected $rules = [
         'hematology_result' => 'required|string',
@@ -53,7 +53,7 @@ class NewMedicalResult extends Component
         'drugtest_remarks' => 'nullable|string',
         'condition' => 'nullable|string',
         'additional_comments' => 'nullable|string',
-        'file' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
+        'result_file' => 'nullable|file|mimes:pdf,jpg,jpeg,png|max:2048',
     ];
 
     public function store()
@@ -61,8 +61,8 @@ class NewMedicalResult extends Component
         $this->validate();
 
         // Save the file if uploaded
-        if ($this->file) {
-            $filePath = $this->file->store('documents', 'public');
+        if ($this->result_file) {
+            $filePath = $this->result_file->store('documents', 'public');
         }
 
         // Example of storing data (adjust to your database structure)
@@ -84,7 +84,7 @@ class NewMedicalResult extends Component
             'drugtest_remarks' => $this->drugtest_remarks,
             'condition' => $this->condition,
             'additional_comments' => $this->additional_comments,
-            'file_path' => $filePath ?? null,
+            'result_file_path' => $filePath ?? null,
             'semester' => now()->month <= 6 ? '2nd sem' : '1st sem',
             'school_year' => now()->month <= 6 ? (now()->year - 1) . '-' . now()->year : now()->year . '-' . (now()->year + 1),
             'upload_date' => now(),
