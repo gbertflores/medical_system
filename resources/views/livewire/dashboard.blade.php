@@ -244,7 +244,7 @@
     new Chart(bar, {
         type: "bar",
         data: {
-            labels: ["Health Status"], // Single label for the category
+            labels: ["Health Status"], 
             datasets: [
                 {
                     label: 'Healthy',
@@ -331,14 +331,14 @@
     new Chart(bar2, {
         type: "bar",
         data: {
-            labels: ["UTI Cases"], // Single label for the category
+            labels: ["UTI Cases"], 
             datasets: [
                 {
                     label: 'Kabasalan',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [uticasesCount[3] !== undefined ? uticasesCount[3] : 0], // Data for Healthy
+                    data: [uticasesCount[3] !== undefined ? uticasesCount[3] : 0], 
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     maxBarThickness: 12
                 },
@@ -347,7 +347,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [uticasesCount[2] !== undefined ? uticasesCount[2] : 0], // Data for Unhealthy
+                    data: [uticasesCount[2] !== undefined ? uticasesCount[2] : 0], 
                     backgroundColor: 'rgba(153, 102, 255, 0.6)',
                     maxBarThickness: 12
                 },
@@ -356,7 +356,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [uticasesCount[1] !== undefined ? uticasesCount[1] : 0], // Data for Unhealthy
+                    data: [uticasesCount[1] !== undefined ? uticasesCount[1] : 0], 
                     backgroundColor: 'rgba(102, 105, 255, 0.6)',
                     maxBarThickness: 12
                 },
@@ -365,7 +365,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [uticasesCount[5] !== undefined ? uticasesCount[5] : 0], // Data for Unhealthy
+                    data: [uticasesCount[5] !== undefined ? uticasesCount[5] : 0], 
                     backgroundColor: 'rgba(102, 255, 102, 0.6)',
                     maxBarThickness: 12
                 },
@@ -374,7 +374,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [uticasesCount[4] !== undefined ? uticasesCount[4] : 0], // Data for Unhealthy
+                    data: [uticasesCount[4] !== undefined ? uticasesCount[4] : 0], 
                     backgroundColor: 'rgba(255, 159, 64, 0.6)',
                     maxBarThickness: 12
                 },
@@ -445,14 +445,14 @@
     new Chart(bar3, {
         type: "bar",
         data: {
-            labels: ["Drug Test"], // Single label for the category
+            labels: ["Drug Test"], 
             datasets: [
                 {
                     label: 'Kabasalan',
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [drugPositiveCount[3] !== undefined ? drugPositiveCount[3] : 0], // Data for Healthy
+                    data: [drugPositiveCount[3] !== undefined ? drugPositiveCount[3] : 0], 
                     backgroundColor: 'rgba(75, 192, 192, 0.6)',
                     maxBarThickness: 12
                 },
@@ -461,7 +461,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [drugPositiveCount[2] !== undefined ? drugPositiveCount[2] : 0], // Data for Unhealthy
+                    data: [drugPositiveCount[2] !== undefined ? drugPositiveCount[2] : 0], 
                     backgroundColor: 'rgba(153, 102, 255, 0.6)',
                     maxBarThickness: 12
                 },
@@ -470,7 +470,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [drugPositiveCount[1] !== undefined ? drugPositiveCount[1] : 0], // Data for Unhealthy
+                    data: [drugPositiveCount[1] !== undefined ? drugPositiveCount[1] : 0], 
                     backgroundColor: 'rgba(102, 105, 255, 0.6)',
                     maxBarThickness: 12
                 },
@@ -479,7 +479,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [drugPositiveCount[5] !== undefined ? drugPositiveCount[5] : 0], // Data for Unhealthy
+                    data: [drugPositiveCount[5] !== undefined ? drugPositiveCount[5] : 0], 
                     backgroundColor: 'rgba(102, 255, 102, 0.6)',
                     maxBarThickness: 12
                 },
@@ -488,7 +488,7 @@
                     tension: 0.4,
                     borderWidth: 0,
                     borderSkipped: false,
-                    data: [drugPositiveCount[4] !== undefined ? drugPositiveCount[4] : 0], // Data for Unhealthy
+                    data: [drugPositiveCount[4] !== undefined ? drugPositiveCount[4] : 0], 
                     backgroundColor: 'rgba(255, 159, 64, 0.6)',
                     maxBarThickness: 12
                 },
@@ -580,7 +580,7 @@
                     tbStudentsCount,
                     totalStudentMedicalCount == 0? 1:
                     totalStudentMedicalCount - leukemiaStudentsCount - lowPlateletsStudentsCount - kidneyStudentsCount - diabetesStudentsCount - pneumoniaStudentsCount - tbStudentsCount 
-                ], // Match the percentages in your table
+                ], 
                 backgroundColor: [
                     "rgba(255, 99, 132, 0.5)",
                     "rgba(54, 162, 235, 0.5)",

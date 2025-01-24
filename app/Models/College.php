@@ -9,7 +9,8 @@ class College extends Model
 {
     protected $fillable = [
         'name',
-        'abbreviation'
+        'abbreviation',
+        'is_active',
     ];
 
     public function programs() {

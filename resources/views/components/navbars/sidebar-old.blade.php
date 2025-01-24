@@ -84,12 +84,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'medical-staff-list' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('medical-staff-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                         <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul text-center"></i>
                     </div>
-                    <span class="nav-link-text ms-1">User Management</span>
+                    <span class="nav-link-text ms-1">Medical Staff List</span>
                 </a>
             </li>
         </ul>

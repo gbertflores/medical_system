@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\StudentList;
 
 use App\Models\MedicalResults;
-use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\PngWriter;
@@ -95,6 +94,6 @@ class MedicalRecords extends Component
     {
         $medical_results = $this->selectedUser->student_information->medical_results;
 
-        return view('livewire.medical-records', ['medical_results' => $medical_results]);
+        return view('livewire.student-list.medical-records', ['medical_results' => $medical_results]);
     }
 }

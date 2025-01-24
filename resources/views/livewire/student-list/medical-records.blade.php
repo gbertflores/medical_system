@@ -148,7 +148,6 @@
 
 <script>
     window.addEventListener('show-modal', event => {
-        // Show the modal when the event is fired
         var myModal = new bootstrap.Modal(document.getElementById('medicalDetailsModal'));
         myModal.show();
     });

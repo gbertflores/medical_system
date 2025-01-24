@@ -90,7 +90,7 @@ class SetupAccount extends Component
     public function store()
     {
         $user = auth()->user();
-        $validatedData = $this->validate();
+        $this->validate();
 
         $user->update([
             'name' => trim($this->last_name . ', ' . $this->first_name . ' ' . ($this->middle_name ? $this->middle_name . ' ' : '') . ($this->extension_name ? $this->extension_name : '')),

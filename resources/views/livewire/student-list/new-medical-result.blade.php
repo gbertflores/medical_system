@@ -35,48 +35,48 @@
                                 'Hematology' => [
                                     'model' => 'hematology',
                                     'abnormalities' => [
-                                        'Anemia',              // Common in students due to dietary issues.
-                                        'Leukocytosis',        // May indicate infection or inflammation.
-                                        'Leukopenia',          // Reflects potential immune deficiencies.
-                                        'Thrombocytopenia'     // Indicates low platelet count affecting clotting.
+                                        'Anemia',              
+                                        'Leukocytosis',        
+                                        'Leukopenia',          
+                                        'Thrombocytopenia'     
                                     ]
                                 ],
                                 'Urinalysis' => [
                                     'model' => 'urinalysis',
                                     'abnormalities' => [
-                                        'UTI',                 // Urinary tract infections, common in youth.
-                                        'Dehydration',         // Common among students due to inadequate water intake.
-                                        'Kidney Disease',      // Relevant for identifying chronic issues early.
-                                        'Diabetes',            // Growing concern among youth due to lifestyle.
-                                        'Bladder Infection',   // Focused on urinary health.
-                                        'Proteinuria'          // Early indicator of kidney issues or dehydration.
+                                        'UTI',                 
+                                        'Dehydration',         
+                                        'Kidney Disease',      
+                                        'Diabetes',            
+                                        'Bladder Infection',   
+                                        'Proteinuria'          
                                     ]
                                 ],
                                 'XRay' => [
                                     'model' => 'xray',
                                     'abnormalities' => [
-                                        'Tuberculosis',        // Essential for public health and contagious diseases.
-                                        'Pneumonia',           // Relevant in screening for respiratory conditions.
-                                        'Broken Bones',        // Occasionally relevant for reporting accidents or past injuries.
-                                        'Lung Scarring',       // Indicator of past lung conditions, including infections.
-                                        'COPD'                 // Less likely but still checked in smokers or for chronic issues.
+                                        'Tuberculosis',        
+                                        'Pneumonia',           
+                                        'Broken Bones',        
+                                        'Lung Scarring',       
+                                        'COPD'                 
                                     ]
                                 ],
                                 'Ishihara Test' => [
                                     'model' => 'ishihara',
                                     'abnormalities' => [
-                                        'Mild CVD',            // Mild Color Vision Deficiency.
-                                        'Moderate CVD',        // Moderate Color Vision Deficiency.
-                                        'Severe CVD',          // Severe Color Vision Deficiency.
-                                        'No Color Vision'      // Complete color blindness.
+                                        'Mild CVD',            
+                                        'Moderate CVD',        
+                                        'Severe CVD',          
+                                        'No Color Vision'      
                                     ]
                                 ],
                                 'Drug Test' => [
                                     'model' => 'drugtest',
                                     'abnormalities' => [
-                                        'Substance Abuse',     // Directly relevant for student fitness.
-                                        'Prescription Drug Abuse', // Includes abuse of prescribed medications.
-                                        'Illegal Drug Use'     // Screening for prohibited substances.
+                                        'Substance Abuse',     
+                                        'Prescription Drug Abuse', 
+                                        'Illegal Drug Use'     
                                     ]
                                 ]
 

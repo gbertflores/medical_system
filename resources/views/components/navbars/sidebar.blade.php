@@ -23,12 +23,39 @@
             </li>
             @if(auth()->user()->hasRole('administrator'))
             <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'user-management' ? ' active bg-gradient-primary' : '' }} "
-                    href="{{ route('user-management') }}">
+                <a class="nav-link text-white {{ Route::currentRouteName() == 'campus-list' ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('campus-list') }}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">list</i>
+                        <i class="material-icons opacity-10">school</i>
                     </div>
-                    <span class="nav-link-text ms-1">Users List</span>
+                    <span class="nav-link-text ms-1">Campuses List</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ str_starts_with(Route::currentRouteName(), 'college-list') ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('college-list') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">apartment</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Colleges List</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ str_starts_with(Route::currentRouteName(), 'program-list') ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('program-list') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">badge</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Programs List</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ str_starts_with(Route::currentRouteName(), 'medical-staff-list') ? ' active bg-gradient-primary' : '' }} "
+                    href="{{ route('medical-staff-list') }}">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons opacity-10">medical_services</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Medical Staffs List</span>
                 </a>
             </li>
             @elseif(auth()->user()->hasRole('medical staff'))

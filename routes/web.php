@@ -4,13 +4,18 @@ use App\Livewire\Auth\ForgotPassword;
 use App\Livewire\Auth\Login;
 use App\Livewire\Auth\Register;
 use App\Livewire\Auth\ResetPassword;
+use App\Livewire\CampusList;
+use App\Livewire\CollegeList;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Dashboard;
 use App\Livewire\UserManagement;
 use App\Livewire\UserProfile;
 use App\Livewire\Landing;
 use App\Livewire\MedicalLookup;
-use App\Livewire\MedicalRecords;
+use App\Livewire\StudentList\MedicalRecords;
+use App\Livewire\MedicalStaffList;
+use App\Livewire\MedicalStaffList\EditMedicalStaff;
+use App\Livewire\MedicalStaffList\NewMedicalStaff;
 use App\Livewire\MedicalStatus;
 use App\Livewire\Notifications;
 use App\Livewire\Profile;
@@ -18,7 +23,8 @@ use App\Livewire\SetupAccount;
 use App\Livewire\StaticSignIn;
 use App\Livewire\StaticSignUp;
 use App\Livewire\StudentList;
-use App\Livewire\NewMedicalResult;
+use App\Livewire\StudentList\NewMedicalResult;
+use App\Livewire\ProgramList;
 
 Route::get('/', Landing::class)->middleware('guest')->name('landing');
 
@@ -42,9 +48,18 @@ Route::group(['middleware' => 'auth'], function () {
     }], function () {
         Route::get('user-profile', UserProfile::class)->name('user-profile');
         Route::get('user-management', UserManagement::class)->name('user-management');
+        Route::get('campus-list', CampusList::class)->name('campus-list');
+        Route::get('college-list', CollegeList::class)->name('college-list');
+        Route::get('program-list', ProgramList::class)->name('program-list');
+
+        Route::get('medical-staff-list', MedicalStaffList::class)->name('medical-staff-list');
+        Route::get('medical-staff-list/new-medical-staff', NewMedicalStaff::class)->name('medical-staff-list/new-medical-staff');
+        Route::get('medical-staff-list/edit-medical-staff', EditMedicalStaff::class)->name('medical-staff-list/edit-medical-staff');
+
         Route::get('student-list', StudentList::class)->name('student-list');
         Route::get('student-list/new-medical-result', NewMedicalResult::class)->name('student-list/new-medical-result');
         Route::get('student-list/medical-records', MedicalRecords::class)->name('student-list/medical-records');
+
         Route::get('medical-records', MedicalRecords::class)->name('medical-records');
         Route::get('dashboard', Dashboard::class)->name('dashboard');
         Route::get('profile', Profile::class)->name('profile');
